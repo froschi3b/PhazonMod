@@ -35,6 +35,10 @@ public class BlockPhazon extends Block {
         return this.blockIcon;
     }
     
+    public boolean isBlockNormalCube(World world, int x, int y, int z) {
+        return false;
+    }
+    
     public void updateTick(World world, int x, int y, int z, Random random) {
         if (!world.isRemote) {
             int meta = world.getBlockMetadata(x, y, z);
