@@ -1,3 +1,4 @@
 tile.phazonBlock0.name=Blue Phazon
 tile.phazonBlock1.name=Red Phazon
 item.phazonDrop.name=Phazon Drop
+death.attack.phazon=%1$s turned into a Phazon Zombie
