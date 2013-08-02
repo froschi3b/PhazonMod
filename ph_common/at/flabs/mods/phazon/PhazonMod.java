@@ -12,6 +12,7 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -24,6 +25,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class PhazonMod {
     @Instance
     public static PhazonMod instance;
+    @SidedProxy(clientSide="at.flabs.mods.phazon.client.ProxyClient",serverSide="at.flabs.mods.phazon.ProxyCommon")
+    public static ProxyCommon proxy;
     public Block phazonBlock;
     public Item phazonCure;
     
@@ -60,6 +63,6 @@ public class PhazonMod {
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent evz) {
-        
+        proxy.registerRendering();
     }
 }
