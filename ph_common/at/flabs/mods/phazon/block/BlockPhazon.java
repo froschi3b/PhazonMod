@@ -3,10 +3,12 @@ package at.flabs.mods.phazon.block;
 import java.util.Random;
 
 import at.flabs.mods.phazon.Vars;
+import at.flabs.mods.phazon.entity.EntityInfPig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.world.World;
 
 public class BlockPhazon extends Block {
@@ -34,17 +36,27 @@ public class BlockPhazon extends Block {
     }
     
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        byte b=(byte) (entity.getEntityData().getByte(Vars.NBTNamePhazonLV)+1);
-        if(b>100){
-            b=100;
-            setEntityInfected(world,x,y,z,entity);
+        if (!world.isRemote) {
+            byte b = (byte) (entity.getEntityData().getByte(Vars.NBTNamePhazonLV) + 1);
+            if (b > 100) {
+                b = 100;
+                setEntityInfected(world, x, y, z, entity);
+            }
+            System.out.println(b);
+            entity.getEntityData().setByte(Vars.NBTNamePhazonLV, b);
         }
-        entity.getEntityData().setByte(Vars.NBTNamePhazonLV, b);
-        
+        System.out.println("yes");
     }
-    public void setEntityInfected(World world, int x, int y, int z, Entity entity){
-        if(!entity.getEntityData().hasKey("PHinf")){
-            
+    
+    public void setEntityInfected(World world, int x, int y, int z, Entity entity) {
+        if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
+            if (entity instanceof EntityPig) {
+                entity.setDead();
+                
+                EntityInfPig eip = new EntityInfPig((EntityPig)entity);
+                world.spawnEntityInWorld(eip);
+            }
         }
     }
+    
 }

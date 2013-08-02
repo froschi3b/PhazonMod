@@ -9,4 +9,6 @@ public class Vars {
     public static final String unlocalizedPhazonCure="phazonCure";
     
     public static final String NBTNamePhazonLV ="phazonLevels";
+    
+    public static final String NBTNamePhazonMob ="PHinf";
 }
