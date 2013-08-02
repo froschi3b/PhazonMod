@@ -1,6 +1,6 @@
 package at.flabs.mods.phazon;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity; 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
