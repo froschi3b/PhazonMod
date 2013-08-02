@@ -92,8 +92,4 @@ public class EntityInfCow extends EntityInf {
     {
         this.playSound("mob.cow.step", 0.15F, 1.0F);
     }
-    @Override
-    public String getEntityName() {
-        return "cow";
-    }
 }

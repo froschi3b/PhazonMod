@@ -29,9 +29,6 @@ public abstract class EntityInf extends EntityMob {
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.getEntityData().setBoolean("PHinf", true);
     }
-    
-    public abstract String getEntityName();
-    
     protected void func_110147_ax() {
         super.func_110147_ax();
         this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);

@@ -69,9 +69,4 @@ public class EntityInfPig extends EntityInf {
     protected void playStepSound(int par1, int par2, int par3, int par4) {
         this.playSound("mob.pig.step", 0.15F, 1.0F);
     }
-    
-    @Override
-    public String getEntityName() {
-        return "pig";
-    }
 }
