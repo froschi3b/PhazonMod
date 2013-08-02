@@ -28,7 +28,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class PhazonMod {
     @Instance
     public static PhazonMod instance;
-    @SidedProxy(clientSide="at.flabs.mods.phazon.client.ProxyClient",serverSide="at.flabs.mods.phazon.ProxyCommon")
+    @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
     public Block phazonBlock;
     public Item phazonCure;
@@ -54,16 +54,16 @@ public class PhazonMod {
         GameRegistry.registerBlock(phazonBlock, Vars.unlocalizedPhazonBlock);
         
         MinecraftForge.EVENT_BUS.register(new EventHandle());
-
+        
         LanguageRegistry.instance().addNameForObject(phazonBlock, "en_US", "Phazon");
         LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
-        int ifcid= EntityRegistry.findGlobalUniqueEntityId();
+        int ifcid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);
-        int ifpid=EntityRegistry.findGlobalUniqueEntityId();
+        int ifpid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfPig.class, "phpig", ifpid);
-        EntityRegistry.registerModEntity(EntityInfCow.class, "phcow",ifcid, this, 50, 1, false);
+        EntityRegistry.registerModEntity(EntityInfCow.class, "phcow", ifcid, this, 50, 1, false);
         EntityRegistry.registerModEntity(EntityInfPig.class, "phpig", ifpid, this, 50, 1, false);
-        }
+    }
     
     @EventHandler
     public void init(FMLInitializationEvent evz) {
