@@ -6,6 +6,7 @@ import at.flabs.mods.phazon.block.BlockPhazon;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -35,7 +36,10 @@ public class PhazonMod {
             config.save();
         }
         phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock).setCreativeTab(CreativeTabs.tabBlock);
+        
         GameRegistry.registerBlock(phazonBlock, Vars.unlocalizedPhazonBlock);
+        
+        MinecraftForge.EVENT_BUS.register(new EventHandle());
     }
     
     @EventHandler
