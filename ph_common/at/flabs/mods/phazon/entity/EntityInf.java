@@ -1,7 +1,5 @@
 package at.flabs.mods.phazon.entity;
 
-import java.util.UUID;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
