@@ -31,7 +31,7 @@ public class EntityInfPig extends EntityInf {
             for (int l = 0; l < k; ++l) {
                 this.dropItem(j, 1);
             }
-            this.dropItem(PhazonMod.instance.phazonCure.itemID, 1);
+            this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
         }
     }
     

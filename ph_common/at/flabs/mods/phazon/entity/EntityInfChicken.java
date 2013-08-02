@@ -110,7 +110,7 @@ public class EntityInfChicken extends EntityInf {
         } else {
             this.dropItem(Item.chickenRaw.itemID, 1);
         }
-        this.dropItem(PhazonMod.instance.phazonCure.itemID, 1);
+        this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
     
 }

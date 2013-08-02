@@ -33,7 +33,7 @@ public class PhazonMod {
     @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
     public Block phazonBlock;
-    public Item phazonCure;
+    public Item phazonDrop;
     
     @EventHandler
     public void perInit(FMLPreInitializationEvent evz) {
@@ -43,7 +43,7 @@ public class PhazonMod {
         try {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
-            phazonCureId = config.getItem("PhazonCure", 10110).getInt();
+            phazonCureId = config.getItem("PhazonDrop", 10110).getInt();
         } catch (Exception e) {
             
         } finally {
@@ -51,7 +51,7 @@ public class PhazonMod {
         }
         phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock).setCreativeTab(CreativeTabs.tabBlock);
         
-        phazonCure = new ItemPhazonCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonCure);
+        phazonDrop = new ItemPhazonCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class,Vars.unlocalizedPhazonBlock);
         

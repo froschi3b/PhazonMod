@@ -52,7 +52,7 @@ public class EntityInfCow extends EntityInf {
                 this.dropItem(Item.beefRaw.itemID, 1);
             }
         }
-        this.dropItem(PhazonMod.instance.phazonCure.itemID, 1);
+        this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
 
     /**
