@@ -6,6 +6,7 @@ import at.flabs.mods.phazon.block.BlockPhazon;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
+import at.flabs.mods.phazon.item.ItemPhazon;
 import at.flabs.mods.phazon.item.ItemPhazonCure;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -52,12 +53,12 @@ public class PhazonMod {
         
         phazonCure = new ItemPhazonCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonCure);
         
-        GameRegistry.registerBlock(phazonBlock, Vars.unlocalizedPhazonBlock);
+        GameRegistry.registerBlock(phazonBlock, ItemPhazon.class,Vars.unlocalizedPhazonBlock);
         
         MinecraftForge.EVENT_BUS.register(new EventHandle());
         
-        LanguageRegistry.instance().addNameForObject(phazonBlock, "en_US", "Phazon");
-        LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
+        LanguageRegistry.instance().loadLocalization(Vars.en_US, "en_US", false);
+        
         int ifcid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);
         EntityRegistry.registerModEntity(EntityInfCow.class, "phcow", ifcid, this, 50, 1, false);
