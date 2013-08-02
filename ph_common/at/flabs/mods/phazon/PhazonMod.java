@@ -57,7 +57,7 @@ public class PhazonMod {
         LanguageRegistry.instance().addNameForObject(phazonBlock, "en_US", "Phazon");
         LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
         
-        EntityRegistry.registerModEntity(EntityInfPig.class, "phinfpig", EntityRegistry.findGlobalUniqueEntityId(), Vars.modid, 50, 1, false);
+        EntityRegistry.registerModEntity(EntityInfPig.class, "phinfpig", EntityRegistry.findGlobalUniqueEntityId(), this, 50, 1, false);
     }
     
     @EventHandler

@@ -9,9 +9,6 @@ public class EntityInfPig extends EntityInf {
     public EntityInfPig(World par1World) {
         super(par1World);
         this.setSize(0.9F, 0.9F);
-        tasks.taskEntries.remove(5);
-        tasks.taskEntries.remove(3);
-        tasks.taskEntries.remove(1);
     }
     @Override
     protected void dropFewItems(boolean par1, int par2)
