@@ -58,9 +58,8 @@ public class PhazonMod {
         LanguageRegistry.instance().addNameForObject(phazonBlock, "en_US", "Phazon");
         LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
         int ifcid= EntityRegistry.findGlobalUniqueEntityId();
-        int ifpid=EntityRegistry.findGlobalUniqueEntityId();
-        System.out.println(ifcid+"+"+ifpid);
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);
+        int ifpid=EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfPig.class, "phpig", ifpid);
         EntityRegistry.registerModEntity(EntityInfCow.class, "phcow",ifcid, this, 50, 1, false);
         EntityRegistry.registerModEntity(EntityInfPig.class, "phpig", ifpid, this, 50, 1, false);
