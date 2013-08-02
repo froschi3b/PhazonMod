@@ -1,12 +1,16 @@
 package at.flabs.mods.phazon.client;
 
 import at.flabs.mods.phazon.Vars;
+import at.flabs.mods.phazon.entity.EntityInfChicken;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderInf extends RenderLiving {
@@ -36,6 +40,16 @@ public class RenderInf extends RenderLiving {
     public static class Chicken extends RenderInf {
         public Chicken(float f) {
             super(new ModelChicken(), f, "chicken");
+        }
+        protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
+        {
+            return this.getWingRotation((EntityInfChicken)par1EntityLivingBase, par2);
+        }
+        protected float getWingRotation(EntityInfChicken ec, float f)
+        {
+            float f1 = ec.field_70888_h + (ec.field_70886_e - ec.field_70888_h) * f;
+            float f2 = ec.field_70884_g + (ec.destPos - ec.field_70884_g) * f;
+            return (MathHelper.sin(f1) + 1.0F) * f2;
         }
     }
     
