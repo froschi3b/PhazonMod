@@ -4,12 +4,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 
 public class Util {
+    public static DamageSource phazon=new DamageSourcePhazon();
     
     public static void setEntityInfected(World world, int x, int y, int z, Entity entity) {
         if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
@@ -32,5 +34,12 @@ public class Util {
                 world.spawnEntityInWorld(eip);
             }
         }
+    }
+    public static class DamageSourcePhazon extends DamageSource{
+
+        protected DamageSourcePhazon() {
+            super("phazon");
+        }
+        
     }
 }
