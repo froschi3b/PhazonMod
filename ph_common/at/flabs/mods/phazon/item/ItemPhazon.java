@@ -1,17 +1,12 @@
 package at.flabs.mods.phazon.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import at.flabs.mods.phazon.PhazonMod;
+import at.flabs.mods.phazon.Vars;
+import net.minecraft.item.ItemMultiTextureTile;
 
-public class ItemPhazon extends ItemBlock{
+public class ItemPhazon extends ItemMultiTextureTile{
 
     public ItemPhazon(int par1) {
-        super(par1);
-    }
-
-    public String getUnlocalizedName(ItemStack is)
-    {
-        return Block.blocksList[this.getBlockID()].getUnlocalizedName()+is.getItemDamage();
+        super(par1, PhazonMod.instance.phazonBlock, new String[]{Vars.unlocalizedPhazonBlock+0,Vars.unlocalizedPhazonBlock+1});
     }
 }

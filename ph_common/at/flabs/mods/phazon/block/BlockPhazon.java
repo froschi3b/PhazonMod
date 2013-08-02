@@ -11,11 +11,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 
 public class BlockPhazon extends Block {
+    Icon blockRed;
     
     public BlockPhazon(int par1) {
         super(par1, Material.rock);
@@ -23,28 +25,30 @@ public class BlockPhazon extends Block {
     
     public void registerIcons(IconRegister icr) {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
-        this.getUnlocalizedName();
+        this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed");
+    }
+    
+    public Icon getIcon(int side, int meta) {
+        if (meta == 1) {
+            return this.blockRed;
+        }
+        return this.blockIcon;
     }
     
     public void updateTick(World world, int x, int y, int z, Random random) {
         if (!world.isRemote) {
-            int i = x + random.nextInt(3) - 1;
-            int j = y + random.nextInt(3) - 1;
-            int k = z + random.nextInt(3) - 1;
-            
-            if (world.getBlockId(i, j, k) == Block.stone.blockID) {
-                world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
+            int meta = world.getBlockMetadata(x, y, z);
+            for (int a = 0; a < (meta + 1); a++) {
+                int i = x + random.nextInt(3) - 1;
+                int j = y + random.nextInt(3) - 1;
+                int k = z + random.nextInt(3) - 1;
                 
+                if (world.getBlockId(i, j, k) == Block.stone.blockID) {
+                    world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
+                    
+                }
             }
         }
-    }
-    
-    @Override
-    public int getRenderColor(int meta) {
-        if (meta == 1) {
-            return 255 << 16;
-        }
-        return super.getRenderColor(meta);
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
