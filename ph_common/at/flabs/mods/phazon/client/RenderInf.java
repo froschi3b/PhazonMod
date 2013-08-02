@@ -1,7 +1,5 @@
 package at.flabs.mods.phazon.client;
 
-import at.flabs.mods.phazon.Vars;
-import at.flabs.mods.phazon.entity.EntityInfChicken;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
@@ -9,9 +7,10 @@ import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import at.flabs.mods.phazon.Vars;
+import at.flabs.mods.phazon.entity.EntityInfChicken;
 
 public class RenderInf extends RenderLiving {
     private ResourceLocation tex;
