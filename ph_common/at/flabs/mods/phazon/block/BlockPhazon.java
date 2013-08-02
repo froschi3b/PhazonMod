@@ -2,15 +2,14 @@ package at.flabs.mods.phazon.block;
 
 import java.util.Random;
 
-import at.flabs.mods.phazon.Vars;
-import at.flabs.mods.phazon.entity.EntityInfPig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import at.flabs.mods.phazon.Util;
+import at.flabs.mods.phazon.Vars;
 
 public class BlockPhazon extends Block {
     
@@ -46,21 +45,10 @@ public class BlockPhazon extends Block {
             byte b = (byte) (entity.getEntityData().getByte(Vars.NBTNamePhazonLV) + 1);
             if (b > 100) {
                 b = 100;
-                setEntityInfected(world, x, y, z, entity);
+               Util.setEntityInfected(world, x, y, z, entity);
             }
             System.out.println(b);
             entity.getEntityData().setByte(Vars.NBTNamePhazonLV, b);
-        }
-    }
-    
-    public void setEntityInfected(World world, int x, int y, int z, Entity entity) {
-        if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
-            if (entity instanceof EntityPig) {
-                entity.setDead();
-                
-                EntityInfPig eip = new EntityInfPig((EntityPig) entity);
-                world.spawnEntityInWorld(eip);
-            }
         }
     }
     
