@@ -2,6 +2,7 @@ package at.flabs.mods.phazon;
 
 import java.io.File;
 
+import at.flabs.mods.phazon.block.BlockPhazon;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
@@ -22,14 +23,17 @@ public class PhazonMod {
     @EventHandler
     public void perInit(FMLPreInitializationEvent evz) {
         Configuration config = new Configuration(new File(evz.getModConfigurationDirectory(), "PhazonMod.cfg"));
-        try{
+        int phazonBlockId = 0;
+        try {
             config.load();
+            phazonBlockId = config.getBlock("Phazon", 1011).getInt();
+        } catch (Exception e) {
             
-        }catch(Exception e){
-            
-        }finally{
+        } finally {
             config.save();
         }
+        phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setUnlocalizedName(Vars.unlocalizedPhazonBlock);
+        
     }
     
     @EventHandler
