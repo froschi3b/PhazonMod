@@ -3,6 +3,7 @@ package at.flabs.mods.phazon;
 import java.io.File;
 
 import at.flabs.mods.phazon.block.BlockPhazon;
+import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 import at.flabs.mods.phazon.item.ItemPhazonCure;
@@ -59,10 +60,13 @@ public class PhazonMod {
         LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
         int ifcid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);
+        EntityRegistry.registerModEntity(EntityInfCow.class, "phcow", ifcid, this, 50, 1, false);
         int ifpid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfPig.class, "phpig", ifpid);
-        EntityRegistry.registerModEntity(EntityInfCow.class, "phcow", ifcid, this, 50, 1, false);
         EntityRegistry.registerModEntity(EntityInfPig.class, "phpig", ifpid, this, 50, 1, false);
+        int ifchid = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityInfChicken.class, "phchick", ifchid);
+        EntityRegistry.registerModEntity(EntityInfChicken.class, "phchick", ifchid, this, 50, 1, false);
     }
     
     @EventHandler
