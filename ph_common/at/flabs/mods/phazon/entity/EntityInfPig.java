@@ -1,11 +1,10 @@
 package at.flabs.mods.phazon.entity;
 
 import at.flabs.mods.phazon.PhazonMod;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class EntityInfPig extends EntityZombie {
+public class EntityInfPig extends EntityInf {
     
     public EntityInfPig(World par1World) {
         super(par1World);
@@ -70,5 +69,9 @@ public class EntityInfPig extends EntityZombie {
     protected void playStepSound(int par1, int par2, int par3, int par4)
     {
         this.playSound("mob.pig.step", 0.15F, 1.0F);
+    }
+    @Override
+    public String getEntityName() {
+        return "pig";
     }
 }
