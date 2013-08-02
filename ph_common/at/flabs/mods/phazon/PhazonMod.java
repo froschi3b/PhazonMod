@@ -32,7 +32,7 @@ public class PhazonMod {
         } finally {
             config.save();
         }
-        phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setUnlocalizedName(Vars.unlocalizedPhazonBlock);
+        phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock);
         
     }
     
