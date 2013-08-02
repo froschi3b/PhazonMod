@@ -1,7 +1,7 @@
 package at.flabs.mods.phazon;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -12,7 +12,7 @@ import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 
 public class Util {
-    public static DamageSource phazon=new DamageSourcePhazon();
+    public static DamageSource phazon = new DamageSourcePhazon();
     
     public static void setEntityInfected(World world, int x, int y, int z, Entity entity) {
         if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
@@ -36,11 +36,13 @@ public class Util {
             }
         }
     }
-    public static boolean recieveDamage(EntityLiving el){
-        return !(el instanceof EntityPig||el instanceof EntityCow||el instanceof EntityChicken);
+    
+    public static boolean recieveDamage(EntityLivingBase el) {
+        return !(el instanceof EntityPig || el instanceof EntityCow || el instanceof EntityChicken || el.getEntityData().hasKey(Vars.NBTNamePhazonMob));
     }
-    public static class DamageSourcePhazon extends DamageSource{
-
+    
+    public static class DamageSourcePhazon extends DamageSource {
+        
         protected DamageSourcePhazon() {
             super("phazon");
         }

@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.Util;
@@ -41,14 +41,14 @@ public class BlockPhazon extends Block {
     }
     
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        if (!world.isRemote && entity instanceof EntityLiving) {
+        if (!world.isRemote && entity instanceof EntityLivingBase) {
             short b = (short) (entity.getEntityData().getShort(Vars.NBTNamePhazonLV) + 1);
-            if (b > 1000) {
-                b = 1000;
+            if (b > 500) {
+                b = 500;
                Util.setEntityInfected(world, x, y, z, entity);
             }
-            if(b>900 && Util.recieveDamage((EntityLiving)entity)){
-                ((EntityLiving)entity).attackEntityFrom(Util.phazon, (b-900f)/100);
+            if(b>400 && Util.recieveDamage((EntityLivingBase)entity)){
+                ((EntityLivingBase)entity).attackEntityFrom(Util.phazon, (b-400f)/100);
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
         }
