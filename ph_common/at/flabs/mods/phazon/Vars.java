@@ -5,4 +5,5 @@ public class Vars {
     public static final String modid = "PhazonMod";
     public static final String modname = "Phazon Mod";
     public static final String unlocalizedPhazonBlock="phazonBlock";
+    public static final String texdir = "phazonmod";
 }

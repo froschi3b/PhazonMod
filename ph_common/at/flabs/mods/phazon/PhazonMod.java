@@ -4,6 +4,7 @@ import java.io.File;
 
 import at.flabs.mods.phazon.block.BlockPhazon;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -12,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Vars.modid, name = Vars.modname, version = Vars.version)
 @NetworkMod
@@ -32,8 +34,8 @@ public class PhazonMod {
         } finally {
             config.save();
         }
-        phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock);
-        
+        phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock).setCreativeTab(CreativeTabs.tabBlock);
+        GameRegistry.registerBlock(phazonBlock, Vars.unlocalizedPhazonBlock);
     }
     
     @EventHandler
