@@ -3,6 +3,7 @@ package at.flabs.mods.phazon;
 import java.io.File;
 
 import at.flabs.mods.phazon.block.BlockPhazon;
+import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 import at.flabs.mods.phazon.item.ItemPhazonCure;
 import net.minecraft.block.Block;
@@ -57,7 +58,8 @@ public class PhazonMod {
         LanguageRegistry.instance().addNameForObject(phazonBlock, "en_US", "Phazon");
         LanguageRegistry.instance().addNameForObject(phazonCure, "en_US", "Pure Phazon Drop");
         
-        EntityRegistry.registerModEntity(EntityInfPig.class, "phinfpig", EntityRegistry.findGlobalUniqueEntityId(), this, 50, 1, false);
+        EntityRegistry.registerModEntity(EntityInfPig.class, "phpig", EntityRegistry.findGlobalUniqueEntityId(), this, 50, 1, false);
+        EntityRegistry.registerModEntity(EntityInfCow.class, "phcow", EntityRegistry.findGlobalUniqueEntityId(), this, 50, 1, false);
     }
     
     @EventHandler
