@@ -2,6 +2,7 @@ package at.flabs.mods.phazon.client;
 
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -26,10 +27,15 @@ public class RenderInf extends RenderLiving {
             super(new ModelCow(), f, "cow");
         }
     }
-    
+
     public static class Pig extends RenderInf {
         public Pig(float f) {
             super(new ModelPig(), f, "pig");
+        }
+    }
+    public static class Chicken extends RenderInf {
+        public Chicken(float f) {
+            super(new ModelChicken(), f, "chicken");
         }
     }
     
