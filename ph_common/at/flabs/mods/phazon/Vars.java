@@ -6,4 +6,6 @@ public class Vars {
     public static final String modname = "Phazon Mod";
     public static final String unlocalizedPhazonBlock="phazonBlock";
     public static final String texdir = "phazonmod";
+    
+    public static final String NBTNamePhazonLV ="phazonLevels";
 }

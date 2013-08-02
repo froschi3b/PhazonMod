@@ -6,6 +6,7 @@ import at.flabs.mods.phazon.Vars;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
 public class BlockPhazon extends Block {
@@ -15,7 +16,7 @@ public class BlockPhazon extends Block {
     }
     
     public void registerIcons(IconRegister icr) {
-        this.blockIcon = icr.registerIcon(Vars.texdir+":phazon");
+        this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
     }
     
     public void updateTick(World world, int x, int y, int z, Random random) {
@@ -29,6 +30,21 @@ public class BlockPhazon extends Block {
                     world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
                 }
             }
+        }
+    }
+    
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
+        byte b=(byte) (entity.getEntityData().getByte(Vars.NBTNamePhazonLV)+1);
+        if(b>100){
+            b=100;
+            setEntityInfected(world,x,y,z,entity);
+        }
+        entity.getEntityData().setByte(Vars.NBTNamePhazonLV, b);
+        
+    }
+    public void setEntityInfected(World world, int x, int y, int z, Entity entity){
+        if(!entity.getEntityData().hasKey("PHinf")){
+            
         }
     }
 }
