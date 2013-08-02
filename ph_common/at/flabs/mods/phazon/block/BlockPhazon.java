@@ -25,7 +25,7 @@ public class BlockPhazon extends Block {
     
     public void registerIcons(IconRegister icr) {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
-        this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed");
+        this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed"); 
     }
     
     public Icon getIcon(int side, int meta) {
