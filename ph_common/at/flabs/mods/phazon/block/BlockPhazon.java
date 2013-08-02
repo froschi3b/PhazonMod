@@ -20,6 +20,7 @@ public class BlockPhazon extends Block {
     
     public void registerIcons(IconRegister icr) {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
+        this.getUnlocalizedName();
     }
     
     public void updateTick(World world, int x, int y, int z, Random random) {
