@@ -24,14 +24,13 @@ public class BlockPhazon extends Block {
     
     public void updateTick(World world, int x, int y, int z, Random random) {
         if (!world.isRemote) {
-            for (int l = 0; l < 2; ++l) {
-                int i = x + random.nextInt(5) - 3;
-                int j = y + random.nextInt(5) - 3;
-                int k = z + random.nextInt(5) - 3;
+                int i = x + random.nextInt(3) - 1;
+                int j = y + random.nextInt(3) - 1;
+                int k = z + random.nextInt(3) - 1;
                 
                 if (world.getBlockId(i, j, k) == Block.stone.blockID) {
                     world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
-                }
+                
             }
         }
     }
@@ -48,7 +47,7 @@ public class BlockPhazon extends Block {
                 b = 1000;
                Util.setEntityInfected(world, x, y, z, entity);
             }
-            if(b>900){
+            if(b>900 && Util.recieveDamage((EntityLiving)entity)){
                 ((EntityLiving)entity).attackEntityFrom(Util.phazon, (b-900f)/100);
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);

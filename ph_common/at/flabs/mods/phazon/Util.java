@@ -1,6 +1,7 @@
 package at.flabs.mods.phazon;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -34,6 +35,9 @@ public class Util {
                 world.spawnEntityInWorld(eip);
             }
         }
+    }
+    public static boolean recieveDamage(EntityLiving el){
+        return !(el instanceof EntityPig||el instanceof EntityCow||el instanceof EntityChicken);
     }
     public static class DamageSourcePhazon extends DamageSource{
 
