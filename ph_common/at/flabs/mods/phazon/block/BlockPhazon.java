@@ -20,7 +20,7 @@ public class BlockPhazon extends Block {
     
     public void updateTick(World world, int x, int y, int z, Random random) {
         if (!world.isRemote) {
-            for (int l = 0; l < 1; ++l) {
+            for (int l = 0; l < 2; ++l) {
                 int i = x + random.nextInt(5) - 3;
                 int j = y + random.nextInt(5) - 3;
                 int k = z + random.nextInt(5) - 3;
