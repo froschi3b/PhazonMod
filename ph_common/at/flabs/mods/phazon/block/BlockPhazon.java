@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BlockPhazon extends Block {
@@ -35,6 +36,11 @@ public class BlockPhazon extends Block {
         }
     }
     
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World w, int x, int y, int z) {
+        float f = 0.0625F;
+        return AxisAlignedBB.getAABBPool().getAABB((double) ((float) x + f), (double) y, (double) ((float) z + f), (double) ((float) (x + 1) - f), (double) ((float) (y + 1) - f), (double) ((float) (z + 1) - f));
+    }
+    
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
         if (!world.isRemote) {
             byte b = (byte) (entity.getEntityData().getByte(Vars.NBTNamePhazonLV) + 1);
@@ -45,7 +51,6 @@ public class BlockPhazon extends Block {
             System.out.println(b);
             entity.getEntityData().setByte(Vars.NBTNamePhazonLV, b);
         }
-        System.out.println("yes");
     }
     
     public void setEntityInfected(World world, int x, int y, int z, Entity entity) {
@@ -53,7 +58,7 @@ public class BlockPhazon extends Block {
             if (entity instanceof EntityPig) {
                 entity.setDead();
                 
-                EntityInfPig eip = new EntityInfPig((EntityPig)entity);
+                EntityInfPig eip = new EntityInfPig((EntityPig) entity);
                 world.spawnEntityInWorld(eip);
             }
         }
