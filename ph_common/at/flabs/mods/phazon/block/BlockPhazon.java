@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
@@ -80,6 +81,9 @@ public class BlockPhazon extends Block {
                 }
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
+            if(entity instanceof EntityPlayerMP){
+                 
+            }
         }
     }
     
