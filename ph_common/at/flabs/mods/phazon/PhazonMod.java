@@ -32,6 +32,7 @@ public class PhazonMod {
     public static PhazonMod instance;
     @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
+    public static int datawatcherid;
     public Block phazonBlock;
     public Item phazonDrop;
     
