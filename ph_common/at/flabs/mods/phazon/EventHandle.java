@@ -7,7 +7,7 @@ public class EventHandle {
     @ForgeSubscribe
     public void onRenderHealthBar(RenderGameOverlayEvent.Post evt) {
         if (evt.type == RenderGameOverlayEvent.ElementType.HEALTH) {
-            
+            //Render Phazon Bar Tomorrow :D
         }
     }
 }
