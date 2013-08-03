@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.item;
 
+import at.flabs.mods.phazon.Vars;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -25,7 +26,12 @@ public class ItemBucketCure extends Item {
 
         if (!world.isRemote)
         {
-            ep.curePotionEffects(is);
+            short prev=ep.getEntityData().getShort(Vars.NBTNamePhazonLV);
+            prev-=100;
+            if(prev<0){
+                prev=0;
+            }
+            ep.getEntityData().setShort(Vars.NBTNamePhazonLV, prev);
         }
 
         return is.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : is;

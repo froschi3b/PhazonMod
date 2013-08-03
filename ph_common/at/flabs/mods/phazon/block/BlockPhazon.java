@@ -52,7 +52,7 @@ public class BlockPhazon extends Block {
                 int i = x + random.nextInt(3) - 1;
                 int j = y + random.nextInt(3) - 1;
                 int k = z + random.nextInt(3) - 1;
-                if (eat(world.getBlockId(x, y, z))) {
+                if (eat(world.getBlockId(i, j, k))) {
                     world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
                     
                 }

@@ -40,11 +40,11 @@ public class PhazonMod {
     public void perInit(FMLPreInitializationEvent evz) {
         Configuration config = new Configuration(new File(evz.getModConfigurationDirectory(), "PhazonMod.cfg"));
         int phazonBlockId = 0;
-        int phazonCureId = 0;
+        int phazonDropId = 0;
         try {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
-            phazonCureId = config.getItem("PhazonDrop", 10110).getInt();
+            phazonDropId = config.getItem("PhazonDrop", 10110).getInt();
         } catch (Exception e) {
             
         } finally {
@@ -52,7 +52,7 @@ public class PhazonMod {
         }
         phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock).setCreativeTab(CreativeTabs.tabBlock);
         
-        phazonDrop = new ItemPhazonCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
+        phazonDrop = new ItemPhazonCure(phazonDropId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
         
