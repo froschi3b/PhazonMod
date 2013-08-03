@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class EntityInfZombie extends EntityInf{
 
     public EntityInfZombie(World par1World) {
-        super(par1World); 
+        super(par1World);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
         this.tasks.addTask(2, new EntityAIMoveTowardsRestriction(this, 1.0D));
