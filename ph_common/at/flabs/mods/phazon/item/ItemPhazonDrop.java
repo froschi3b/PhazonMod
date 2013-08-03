@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemPhazonCure extends Item {
+public class ItemPhazonDrop extends Item {
     
-    public ItemPhazonCure(int par1) {
+    public ItemPhazonDrop(int par1) {
         super(par1);
         this.setCreativeTab(CreativeTabs.tabAllSearch);
         this.func_111206_d(Vars.texdir + ":" + Vars.unlocalizedPhazonDrop);

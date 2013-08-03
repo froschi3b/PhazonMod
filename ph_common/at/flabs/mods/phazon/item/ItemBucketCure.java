@@ -1,11 +1,14 @@
 package at.flabs.mods.phazon.item;
 
+import java.util.List;
+
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemBucketCure extends Item {
@@ -35,6 +38,11 @@ public class ItemBucketCure extends Item {
         }
 
         return is.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : is;
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public void addInformation(ItemStack is, EntityPlayer ep, List l, boolean debug) {
+        l.add(StatCollector.translateToLocal("item.phazonCure.sub"));
     }
 
     /**

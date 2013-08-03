@@ -6,12 +6,14 @@ import at.flabs.mods.phazon.block.BlockPhazon;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
+import at.flabs.mods.phazon.item.ItemBucketCure;
 import at.flabs.mods.phazon.item.ItemPhazon;
-import at.flabs.mods.phazon.item.ItemPhazonCure;
+import at.flabs.mods.phazon.item.ItemPhazonDrop;
 import at.flabs.mods.phazon.network.NetHandle;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -34,17 +36,19 @@ public class PhazonMod {
     @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
     public Block phazonBlock;
-    public Item phazonDrop;
+    public Item phazonDrop,phazonCure;
     
     @EventHandler
     public void perInit(FMLPreInitializationEvent evz) {
         Configuration config = new Configuration(new File(evz.getModConfigurationDirectory(), "PhazonMod.cfg"));
         int phazonBlockId = 0;
         int phazonDropId = 0;
+        int phazonCureId = 0;
         try {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
             phazonDropId = config.getItem("PhazonDrop", 10110).getInt();
+            phazonCureId = config.getItem("PhazonCure", 10111).getInt();
         } catch (Exception e) {
             
         } finally {
@@ -52,13 +56,16 @@ public class PhazonMod {
         }
         phazonBlock = new BlockPhazon(phazonBlockId).setHardness(1f).setTickRandomly(true).setUnlocalizedName(Vars.unlocalizedPhazonBlock).setCreativeTab(CreativeTabs.tabBlock);
         
-        phazonDrop = new ItemPhazonCure(phazonDropId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
+        phazonDrop = new ItemPhazonDrop(phazonDropId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
+        phazonCure = new ItemBucketCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonCure);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
         
         MinecraftForge.EVENT_BUS.register(new EventHandle());
         
         LanguageRegistry.instance().loadLocalization(Vars.en_US, "en_US", false);
+        
+        GameRegistry.addRecipe(new ItemStack(phazonCure), "ddd","dbd","ddd",'d',phazonDrop,'b',Item.bucketEmpty);
         
         int ifcid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);
