@@ -3,6 +3,8 @@ package at.flabs.mods.phazon.block;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -11,9 +13,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import at.flabs.mods.phazon.PhazonMod;
 import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 
@@ -82,9 +86,12 @@ public class BlockPhazon extends Block {
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
             if(entity instanceof EntityPlayerMP){
-                 
+                Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
+                PacketDispatcher.sendPacketToPlayer(pckt, (Player) entity);
             }
         }
     }
-    
+    private static byte[] toBytes(short s) {
+        return new byte[]{(byte)(s & 0x00FF),(byte)((s & 0xFF00)>>8)};
+    }
 }
