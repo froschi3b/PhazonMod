@@ -105,7 +105,7 @@ public class BlockPhazon extends Block {
                     ((EntityPlayerMP) entity).sendChatToPlayer(cmc);
                 }
                 if (b != old) {
-                    Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
+                    Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, Util.toBytes(b));
                     PacketDispatcher.sendPacketToPlayer(pckt, (Player) entity);
                 }
             }
@@ -113,7 +113,4 @@ public class BlockPhazon extends Block {
         }
     }
     
-    private static byte[] toBytes(short s) {
-        return new byte[] { (byte) (s & 0x00FF), (byte) ((s & 0xFF00) >> 8) };
-    }
 }

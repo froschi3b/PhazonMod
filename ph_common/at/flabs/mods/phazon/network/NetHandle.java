@@ -1,6 +1,7 @@
 package at.flabs.mods.phazon.network;
 
 import at.flabs.mods.phazon.PhazonMod;
+import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetworkManager;
@@ -28,12 +29,8 @@ public class NetHandle implements ITinyPacketHandler,IConnectionHandler{
     public void playerLoggedIn(Player player, NetHandler netHandler, INetworkManager manager) {
         EntityPlayerMP ep=((EntityPlayerMP)player);
         short s=ep.getEntityData().getShort(Vars.NBTNamePhazonLV);
-        Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(s));
+        Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, Util.toBytes(s));
         PacketDispatcher.sendPacketToPlayer(pckt, player);
-    }
-
-    private static byte[] toBytes(short s) {
-        return new byte[]{(byte)(s & 0x00FF),(byte)((s & 0xFF00)>>8)};
     }
     @Override
     public String connectionReceived(NetLoginHandler netHandler, INetworkManager manager) {

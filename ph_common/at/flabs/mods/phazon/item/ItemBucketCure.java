@@ -2,12 +2,17 @@ package at.flabs.mods.phazon.item;
 
 import java.util.List;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
+import at.flabs.mods.phazon.PhazonMod;
+import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -35,6 +40,8 @@ public class ItemBucketCure extends Item {
                 prev=0;
             }
             ep.getEntityData().setShort(Vars.NBTNamePhazonLV, prev);
+            Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, Util.toBytes(prev));
+            PacketDispatcher.sendPacketToPlayer(pckt, (Player) ep);
         }
 
         return is.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : is;

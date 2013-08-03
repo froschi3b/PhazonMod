@@ -12,7 +12,10 @@ import at.flabs.mods.phazon.entity.EntityInfPig;
 
 public class Util {
     public static DamageSource phazon = new DamageSourcePhazon();
-    
+
+    public static byte[] toBytes(short s) {
+        return new byte[] { (byte) (s & 0x00FF), (byte) ((s & 0xFF00) >> 8) };
+    }
     public static boolean setEntityInfected(World world, int x, int y, int z, Entity entity) {
         if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
             if (entity instanceof EntityPig) {
