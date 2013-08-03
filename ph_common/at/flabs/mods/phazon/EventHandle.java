@@ -24,9 +24,11 @@ public class EventHandle {
             if(renderedBossHealth){
                 y=20;
             }
+            short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
+            int wid=(int) (s/400d*128d);
             
             mc.renderEngine.func_110577_a(guiTex);
-            mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 16, 128, 16);
+            mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 16, wid, 16);
             mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 0, 128, 16);
             mc.func_110434_K().func_110577_a(Gui.field_110324_m);
             renderedBossHealth=false;

@@ -32,7 +32,6 @@ public class PhazonMod {
     public static PhazonMod instance;
     @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
-    public static int datawatcherid;
     public Block phazonBlock;
     public Item phazonDrop;
     
@@ -45,6 +44,7 @@ public class PhazonMod {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
             phazonCureId = config.getItem("PhazonDrop", 10110).getInt();
+            Vars.datawatcherid = config.get("general", "dataWatcherId", 24).getInt();
         } catch (Exception e) {
             
         } finally {

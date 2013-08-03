@@ -14,4 +14,5 @@ public class Vars {
     public static final String NBTNamePhazonLV ="phazonLevels";
     
     public static final String NBTNamePhazonMob ="PHinf";
+    public static int datawatcherid;
 }
