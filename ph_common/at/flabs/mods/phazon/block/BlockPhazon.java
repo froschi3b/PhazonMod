@@ -82,7 +82,7 @@ public class BlockPhazon extends Block {
                 ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, (b - 400f) / 10);
                 if (b==500){
                     ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
-                }
+                } 
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
             if(entity instanceof EntityPlayerMP){
