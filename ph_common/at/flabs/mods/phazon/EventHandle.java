@@ -25,7 +25,7 @@ public class EventHandle {
                 y=20;
             }
             short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
-            int wid=(int) (s/400d*128d);
+            int wid=(int) (s/500d*128d);
             
             mc.renderEngine.func_110577_a(guiTex);
             mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 16, wid, 16);

@@ -52,10 +52,14 @@ public class BlockPhazon extends Block {
                 int i = x + random.nextInt(3) - 1;
                 int j = y + random.nextInt(3) - 1;
                 int k = z + random.nextInt(3) - 1;
-                
-                if (world.getBlockId(i, j, k) == Block.stone.blockID) {
+                if (world.getBlockId(i, j, k) == Block.grass.blockID || world.getBlockId(i, j, k) == Block.dirt.blockID) {
                     world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
                     
+                }
+                if (meta == 1) {
+                    if (world.getBlockId(i, j, k) == Block.stone.blockID) {
+                        world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
+                    }
                 }
             }
         }
@@ -76,6 +80,9 @@ public class BlockPhazon extends Block {
         if (!world.isRemote && entity instanceof EntityLivingBase) {
             short old = entity.getEntityData().getShort(Vars.NBTNamePhazonLV);
             short b = (short) (old + 1);
+            if (world.getBlockMetadata(x, y, z) == 1) {
+                b++;
+            }
             if (b > 500) {
                 b = 500;
                 if (!Util.setEntityInfected(world, x, y, z, entity)) {
@@ -83,7 +90,7 @@ public class BlockPhazon extends Block {
                 }
             }
             if (entity instanceof EntityPlayerMP) {
-                if (b >= 400 && old < 400) {
+                if ((b >= 400 && old < 400) || (b >= 450 && old < 450)) {
                     ChatMessageComponent cmc = new ChatMessageComponent();
                     cmc.func_111072_b("[Warning] Phazon Levels High");
                     ((EntityPlayerMP) entity).sendChatToPlayer(cmc);
