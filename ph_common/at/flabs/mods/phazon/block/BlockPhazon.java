@@ -25,7 +25,7 @@ public class BlockPhazon extends Block {
     
     public void registerIcons(IconRegister icr) {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
-        this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed"); 
+        this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed");
     }
     
     public Icon getIcon(int side, int meta) {
@@ -67,13 +67,13 @@ public class BlockPhazon extends Block {
     }
     
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        if (!world.isRemote && entity instanceof EntityLivingBase) {
+        if (entity instanceof EntityLivingBase) {
             short b = (short) (entity.getEntityData().getShort(Vars.NBTNamePhazonLV) + 1);
             if (b > 500) {
                 b = 500;
-                Util.setEntityInfected(world, x, y, z, entity);
+                if (!world.isRemote) Util.setEntityInfected(world, x, y, z, entity);
             }
-            if (b > 400 && Util.recieveDamage((EntityLivingBase) entity)) {
+            if (!world.isRemote && b > 400 && Util.recieveDamage((EntityLivingBase) entity)) {
                 ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, (b - 400f) / 100);
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
