@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.entity;
 
+import at.flabs.mods.phazon.Vars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.world.World;
@@ -8,7 +9,7 @@ public abstract class EntityInf extends EntityMob {
     
     public EntityInf(World par1World) {
         super(par1World);
-        this.getEntityData().setBoolean("PHinf", true);
+        this.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
     }
     protected void func_110147_ax() {
         super.func_110147_ax();

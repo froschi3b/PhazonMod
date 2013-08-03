@@ -4,9 +4,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.boss.BossStatus;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public class EventHandle {
     private static final ResourceLocation guiTex = new ResourceLocation(Vars.texdir,Vars.hud);
@@ -35,6 +37,14 @@ public class EventHandle {
         }else if(evt.type == RenderGameOverlayEvent.ElementType.BOSSHEALTH){
             if(BossStatus.bossName != null && BossStatus.statusBarLength > 0){
                 renderedBossHealth=true;
+            }
+        }
+    }
+    @ForgeSubscribe
+    public void onDeath(LivingDeathEvent evt){
+        if(evt.entityLiving instanceof EntityPlayer){
+            if (evt.source.damageType.startsWith("phazon")){
+                //TODO spawn superzombie
             }
         }
     }

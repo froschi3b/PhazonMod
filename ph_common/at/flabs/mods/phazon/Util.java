@@ -26,6 +26,7 @@ public class Util {
         if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
             if (entity instanceof EntityPig) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfPig eip = new EntityInfPig((EntityPig) entity);
                 world.spawnEntityInWorld(eip);
@@ -34,6 +35,7 @@ public class Util {
             }
             if (entity instanceof EntityCow) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfCow eip = new EntityInfCow((EntityCow) entity);
                 world.spawnEntityInWorld(eip);
@@ -41,6 +43,7 @@ public class Util {
             }
             if (entity instanceof EntityChicken) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfChicken eip = new EntityInfChicken((EntityChicken) entity);
                 world.spawnEntityInWorld(eip);
@@ -48,6 +51,7 @@ public class Util {
             }
             if (entity instanceof EntityCreeper) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfCreeper eip = new EntityInfCreeper((EntityCreeper) entity);
                 world.spawnEntityInWorld(eip);
@@ -55,6 +59,7 @@ public class Util {
             }
             if (entity instanceof EntityZombie) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfZombie eip = new EntityInfZombie((EntityZombie) entity);
                 world.spawnEntityInWorld(eip);
@@ -62,6 +67,7 @@ public class Util {
             }
             if (entity instanceof EntitySkeleton) {
                 entity.setDead();
+                entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
                 EntityInfSkeleton eip = new EntityInfSkeleton((EntitySkeleton) entity);
                 world.spawnEntityInWorld(eip);
