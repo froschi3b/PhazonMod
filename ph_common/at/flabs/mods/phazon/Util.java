@@ -41,6 +41,7 @@ public class Util {
         return !(el instanceof EntityPig || el instanceof EntityCow || el instanceof EntityChicken || el.getEntityData().hasKey(Vars.NBTNamePhazonMob));
     }
     
+    
     public static class DamageSourcePhazon extends DamageSource {
         
         protected DamageSourcePhazon() {
