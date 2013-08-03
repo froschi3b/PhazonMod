@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.client;
 
+import at.flabs.mods.phazon.Vars;
 import at.flabs.mods.phazon.entity.EntityInfSkeleton;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class RenderInfSkeleton extends RenderBiped
 {
-    private static final ResourceLocation tex = new ResourceLocation("textures/entity/skeleton/skeleton.png");
+    private static final ResourceLocation tex = new ResourceLocation(Vars.texdir, "textures/entity/infskeleton.png");
 
     public RenderInfSkeleton()
     {
