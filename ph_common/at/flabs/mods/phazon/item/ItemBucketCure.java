@@ -22,6 +22,7 @@ public class ItemBucketCure extends Item {
         super(id);
         this.setMaxStackSize(1);
         this.setCreativeTab(CreativeTabs.tabMisc);
+        this.func_111206_d(Vars.texdir + ":" + Vars.unlocalizedPhazonCure);
     }
 
 

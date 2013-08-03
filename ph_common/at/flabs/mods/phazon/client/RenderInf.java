@@ -3,6 +3,7 @@ package at.flabs.mods.phazon.client;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
+import net.minecraft.client.model.ModelCreeper;
 import net.minecraft.client.model.ModelPig;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -51,5 +52,10 @@ public class RenderInf extends RenderLiving {
             return (MathHelper.sin(f1) + 1.0F) * f2;
         }
     }
-    
+
+    public static class Creeper extends RenderInf {
+        public Creeper(float f) {
+            super(new ModelCreeper(), f, "creeper");
+        }
+    }
 }

@@ -32,7 +32,7 @@ public abstract class EntityInf extends EntityMob {
     protected void func_110147_ax() {
         super.func_110147_ax();
         this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.23000000417232513D);
+        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.23000000417232513D*2);
         this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(3.0D);
     }
     /**

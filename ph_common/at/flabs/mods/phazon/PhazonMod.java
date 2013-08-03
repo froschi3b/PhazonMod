@@ -5,6 +5,7 @@ import java.io.File;
 import at.flabs.mods.phazon.block.BlockPhazon;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
+import at.flabs.mods.phazon.entity.EntityInfCreeper;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 import at.flabs.mods.phazon.item.ItemBucketCure;
 import at.flabs.mods.phazon.item.ItemPhazon;
@@ -76,6 +77,9 @@ public class PhazonMod {
         int ifchid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfChicken.class, "phchick", ifchid);
         EntityRegistry.registerModEntity(EntityInfChicken.class, "phchick", ifchid, this, 50, 1, false);
+        int ifcrid = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityInfCreeper.class, "phcre", ifcrid);
+        EntityRegistry.registerModEntity(EntityInfCreeper.class, "phcre", ifcrid, this, 50, 1, false);
     }
     
     @EventHandler
