@@ -64,8 +64,14 @@ public class BlockPhazon extends Block {
             }
         }
     }
-    public static boolean eat(int id){
-        return id==Block.grass.blockID||id==Block.dirt.blockID||id==Block.sand.blockID||id==Block.wood.blockID||id==Block.leaves.blockID;
+    public static int[] eatlist = {Block.grass.blockID, Block.dirt.blockID, Block.sand.blockID, Block.wood.blockID, Block.leaves.blockID};
+    public static boolean eat(int id) {
+        for(int i : eatlist){
+            if(id==i){
+                return true;
+            }
+        }
+        return false;
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
