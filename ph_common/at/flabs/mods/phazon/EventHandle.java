@@ -13,7 +13,7 @@ public class EventHandle {
         if (evt.type == RenderGameOverlayEvent.ElementType.HEALTH) {
             Minecraft.getMinecraft().renderEngine.func_110577_a(guiTex);
             int wid=Minecraft.getMinecraft().currentScreen.width/2;
-            int hid=Minecraft.getMinecraft().currentScreen.height/2;
+            int hid=Minecraft.getMinecraft().currentScreen.height/2; 
             Minecraft.getMinecraft().currentScreen.drawTexturedModalRect(x, y, u, v, wid, hei);
         }
     }
