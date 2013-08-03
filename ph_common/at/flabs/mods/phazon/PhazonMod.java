@@ -8,6 +8,7 @@ import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 import at.flabs.mods.phazon.item.ItemPhazon;
 import at.flabs.mods.phazon.item.ItemPhazonCure;
+import at.flabs.mods.phazon.network.NetHandle;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -26,7 +27,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Vars.modid, name = Vars.modname, version = Vars.version)
-@NetworkMod
+@NetworkMod(tinyPacketHandler=NetHandle.class)
 public class PhazonMod {
     @Instance
     public static PhazonMod instance;
