@@ -74,7 +74,10 @@ public class BlockPhazon extends Block {
                 if (!world.isRemote) Util.setEntityInfected(world, x, y, z, entity);
             }
             if (!world.isRemote && b > 400 && Util.recieveDamage((EntityLivingBase) entity)) {
-                ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, (b - 400f) / 100);
+                ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, (b - 400f) / 10);
+                if (b==500){
+                    ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
+                }
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
         }
