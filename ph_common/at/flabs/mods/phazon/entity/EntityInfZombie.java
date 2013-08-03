@@ -9,6 +9,7 @@ public class EntityInfZombie extends EntityZombie{
 
     public EntityInfZombie(World world) {
         super(world);
+        this.getEntityData().setBoolean("PHinf", true);
     }
     public EntityInfZombie(EntityZombie ep){
         this(ep.worldObj);
@@ -17,6 +18,7 @@ public class EntityInfZombie extends EntityZombie{
         for (int i=0;i<inv.length;i++){
             this.setCurrentItemOrArmor(i, inv[i]);
         }
+        this.setVillager(ep.isVillager());
     }
     public EnumCreatureAttribute getCreatureAttribute()
     {
