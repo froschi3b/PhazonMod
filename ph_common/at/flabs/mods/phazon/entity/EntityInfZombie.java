@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -26,6 +27,11 @@ public class EntityInfZombie extends EntityInf{
         this.tasks.addTask(5, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+    }
+    public EntityInfZombie(EntityZombie ep){
+        this(ep.worldObj);
+        this.setPosition(ep.posX, ep.posY, ep.posZ);
+        this.setRotation(ep.rotationYaw, ep.rotationPitch);
     }
     /**
      * Returns the sound this mob makes while it's alive.
