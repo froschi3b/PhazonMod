@@ -9,6 +9,8 @@ public class Vars {
     public static final String unlocalizedPhazonDrop="phazonDrop";
     public static final String en_US = "/assets/phazonmod/lang/en_US.lang";
     
+    public static final String hud = "textures/gui/hud.png";
+    
     public static final String NBTNamePhazonLV ="phazonLevels";
     
     public static final String NBTNamePhazonMob ="PHinf";
