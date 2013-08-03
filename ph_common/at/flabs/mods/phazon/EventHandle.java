@@ -15,7 +15,6 @@ public class EventHandle {
             int wid=Minecraft.getMinecraft().currentScreen.width/2;
             int hid=Minecraft.getMinecraft().currentScreen.height/2;
             Minecraft.getMinecraft().currentScreen.drawTexturedModalRect(x, y, u, v, wid, hei);
-            
         }
     }
 }
