@@ -9,5 +9,8 @@ public class EntityPlasma extends EntityArrow {
     public EntityPlasma(World par1World, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase, float par4, float par5) {
         super(par1World, par2EntityLivingBase, par3EntityLivingBase, par4, par5);
     }
+    public EntityPlasma(World par1World) {
+        super(par1World);
+    }
     
 }
