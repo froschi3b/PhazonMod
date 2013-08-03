@@ -27,6 +27,7 @@ public class Util {
                 
                 EntityInfPig eip = new EntityInfPig((EntityPig) entity);
                 world.spawnEntityInWorld(eip);
+                world.spawnParticle("smoke", x+0.5, y+0.5, z+0.5, 0, 0.5, 0);
                 return true;
             }
             if (entity instanceof EntityCow) {

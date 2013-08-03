@@ -50,7 +50,7 @@ public class PhazonMod {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
             phazonDropId = config.getItem("PhazonDrop", 10110).getInt();
-            phazonCureId = config.getItem("PhazonCure", 10111).getInt();
+            phazonCureId = config.getItem("PhazonbCure", 10111).getInt();
         } catch (Exception e) {
             
         } finally {
