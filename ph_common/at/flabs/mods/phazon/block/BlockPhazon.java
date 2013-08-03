@@ -78,20 +78,19 @@ public class BlockPhazon extends Block {
                 b = 500;
                 if (!world.isRemote) Util.setEntityInfected(world, x, y, z, entity);
             }
-            if (!world.isRemote && b > 400 && Util.recieveDamage((EntityLivingBase) entity)) {
-                ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, (b - 400f) / 10);
-                if (b==500){
-                    ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
-                } 
+            if (!world.isRemote && b == 500 && Util.recieveDamage((EntityLivingBase) entity)) {
+                ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
+                
             }
-            entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
-            if(entity instanceof EntityPlayerMP){
-                Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
+            if (entity instanceof EntityPlayerMP) {
+                Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
                 PacketDispatcher.sendPacketToPlayer(pckt, (Player) entity);
             }
+            entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
         }
     }
+    
     private static byte[] toBytes(short s) {
-        return new byte[]{(byte)(s & 0x00FF),(byte)((s & 0xFF00)>>8)};
+        return new byte[] { (byte) (s & 0x00FF), (byte) ((s & 0xFF00) >> 8) };
     }
 }

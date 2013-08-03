@@ -27,7 +27,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Vars.modid, name = Vars.modname, version = Vars.version)
-@NetworkMod(tinyPacketHandler=NetHandle.class)
+@NetworkMod(tinyPacketHandler = NetHandle.class, connectionHandler = NetHandle.class)
 public class PhazonMod {
     @Instance
     public static PhazonMod instance;
@@ -45,7 +45,6 @@ public class PhazonMod {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
             phazonCureId = config.getItem("PhazonDrop", 10110).getInt();
-            Vars.datawatcherid = config.get("general", "dataWatcherId", 24).getInt();
         } catch (Exception e) {
             
         } finally {
@@ -55,7 +54,7 @@ public class PhazonMod {
         
         phazonDrop = new ItemPhazonCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
         
-        GameRegistry.registerBlock(phazonBlock, ItemPhazon.class,Vars.unlocalizedPhazonBlock);
+        GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
         
         MinecraftForge.EVENT_BUS.register(new EventHandle());
         
