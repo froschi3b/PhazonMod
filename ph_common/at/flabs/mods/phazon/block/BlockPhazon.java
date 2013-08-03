@@ -52,7 +52,7 @@ public class BlockPhazon extends Block {
                 int i = x + random.nextInt(3) - 1;
                 int j = y + random.nextInt(3) - 1;
                 int k = z + random.nextInt(3) - 1;
-                if (world.getBlockId(i, j, k) == Block.grass.blockID || world.getBlockId(i, j, k) == Block.dirt.blockID) {
+                if (eat(world.getBlockId(x, y, z))) {
                     world.setBlock(i, j, k, this.blockID, world.getBlockMetadata(x, y, z), 3);
                     
                 }
@@ -63,6 +63,9 @@ public class BlockPhazon extends Block {
                 }
             }
         }
+    }
+    public static boolean eat(int id){
+        return id==Block.grass.blockID||id==Block.dirt.blockID||id==Block.sand.blockID||id==Block.wood.blockID||id==Block.leaves.blockID;
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
