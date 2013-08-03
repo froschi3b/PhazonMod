@@ -1,6 +1,7 @@
 package at.flabs.mods.phazon;
 
 import net.minecraft.entity.Entity; 
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -8,6 +9,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
+import at.flabs.mods.phazon.entity.EntityInfCreeper;
 import at.flabs.mods.phazon.entity.EntityInfPig;
 
 public class Util {
@@ -36,6 +38,13 @@ public class Util {
                 entity.setDead();
                 
                 EntityInfChicken eip = new EntityInfChicken((EntityChicken) entity);
+                world.spawnEntityInWorld(eip);
+                return true;
+            }
+            if (entity instanceof EntityCreeper) {
+                entity.setDead();
+                
+                EntityInfCreeper eip = new EntityInfCreeper((EntityCreeper) entity);
                 world.spawnEntityInWorld(eip);
                 return true;
             }

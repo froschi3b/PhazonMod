@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,10 +27,15 @@ public class EntityInfCreeper extends EntityInf {
 
     /** Explosion radius for this creeper. */
     private int explosionRadius = 3;
-    
+
     public EntityInfCreeper(World world) {
         super(world);
         this.tasks.addTask(6, new EntityAIInfCreeperSwell(this));
+    }
+    public EntityInfCreeper(EntityCreeper ec) {
+        this(ec.worldObj);
+        this.setPosition(ec.posX, ec.posY, ec.posZ);
+        this.setRotation(ec.rotationYaw, ec.rotationPitch);
     }
 
     public int func_82143_as()
