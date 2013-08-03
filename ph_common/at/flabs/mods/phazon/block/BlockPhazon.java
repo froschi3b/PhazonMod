@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.PhazonMod;
@@ -72,19 +73,25 @@ public class BlockPhazon extends Block {
     }
     
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        if (entity instanceof EntityLivingBase) {
-            short b = (short) (entity.getEntityData().getShort(Vars.NBTNamePhazonLV) + 1);
+        if (!world.isRemote && entity instanceof EntityLivingBase) {
+            short old = entity.getEntityData().getShort(Vars.NBTNamePhazonLV);
+            short b = (short) (old + 1);
             if (b > 500) {
                 b = 500;
-                if (!world.isRemote) Util.setEntityInfected(world, x, y, z, entity);
-            }
-            if (!world.isRemote && b == 500 && Util.recieveDamage((EntityLivingBase) entity)) {
-                ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
-                
+                if (!Util.setEntityInfected(world, x, y, z, entity)) {
+                    ((EntityLivingBase) entity).attackEntityFrom(Util.phazon, 10f);
+                }
             }
             if (entity instanceof EntityPlayerMP) {
-                Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
-                PacketDispatcher.sendPacketToPlayer(pckt, (Player) entity);
+                if (b >= 400 && old < 400) {
+                    ChatMessageComponent cmc = new ChatMessageComponent();
+                    cmc.func_111072_b("[Warning] Phazon Levels High");
+                    ((EntityPlayerMP) entity).sendChatToPlayer(cmc);
+                }
+                if (b != old) {
+                    Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, toBytes(b));
+                    PacketDispatcher.sendPacketToPlayer(pckt, (Player) entity);
+                }
             }
             entity.getEntityData().setShort(Vars.NBTNamePhazonLV, b);
         }
