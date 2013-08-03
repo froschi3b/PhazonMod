@@ -12,6 +12,6 @@ public class ProxyClient extends ProxyCommon {
         RenderingRegistry.registerEntityRenderingHandler(EntityInfPig.class, new RenderInf.Pig(0.5f));
         RenderingRegistry.registerEntityRenderingHandler(EntityInfChicken.class, new RenderInf.Chicken(0.3f));
         RenderingRegistry.registerEntityRenderingHandler(EntityInfCreeper.class, new RenderInfCreeper());
-        RenderingRegistry.registerEntityRenderingHandler(EntityInfZombie.class, new RenderInf.Zombie(0.5f));
+        RenderingRegistry.registerEntityRenderingHandler(EntityInfZombie.class, new RenderInfZombie());
     }
 }

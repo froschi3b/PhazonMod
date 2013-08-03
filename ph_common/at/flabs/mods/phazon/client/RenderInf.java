@@ -4,7 +4,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.model.ModelPig;
-import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -50,11 +49,6 @@ public class RenderInf extends RenderLiving {
             float f1 = ec.field_70888_h + (ec.field_70886_e - ec.field_70888_h) * f;
             float f2 = ec.field_70884_g + (ec.destPos - ec.field_70884_g) * f;
             return (MathHelper.sin(f1) + 1.0F) * f2;
-        }
-    }
-    public static class Zombie extends RenderInf {
-        public Zombie(float f) {
-            super(new ModelZombie(), f, "zombie");
         }
     }
 }
