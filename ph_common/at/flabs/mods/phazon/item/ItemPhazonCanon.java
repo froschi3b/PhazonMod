@@ -67,7 +67,7 @@ public class ItemPhazonCanon extends Item {
             world.playSoundAtEntity(ep, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
             
             if (!ep.capabilities.isCreativeMode) {
-                ep.inventory.consumeInventoryItem(Item.arrow.itemID);
+                Util.removePhazon(ep, flag);
             }
             
             if (!world.isRemote) {
