@@ -32,7 +32,7 @@ public class ItemPhazonCanon extends Item {
         
         boolean flag = EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
         
-        if (ep.capabilities.isCreativeMode || ep.inventory.hasItem(Item.arrow.itemID)) {
+        if (ep.capabilities.isCreativeMode || Util.hasEnoughPhazon(ep, flag)) {
             float f = (float) j;
             f = (f * f + f * 2.0F) / 3.0F;
             
@@ -96,7 +96,8 @@ public class ItemPhazonCanon extends Item {
      * pressed. Args: itemStack, world, entityPlayer
      */
     public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-        if (player.capabilities.isCreativeMode || Util.hasEnoughPhazon(player)) {
+        boolean flag = EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
+        if (player.capabilities.isCreativeMode || Util.hasEnoughPhazon(player, flag)) {
             player.setItemInUse(is, this.getMaxItemUseDuration(is));
         }
         

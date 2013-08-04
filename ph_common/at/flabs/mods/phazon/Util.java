@@ -79,8 +79,11 @@ public class Util {
         return true;
     }
     
-    public static boolean hasEnoughPhazon(EntityPlayer player){
+    public static boolean hasEnoughPhazon(EntityPlayer player, boolean infinity){
         return true;
+    }
+    public static void removePhazon(EntityPlayer player, boolean infinity){
+        
     }
     
     public static class DamageSourcePhazon extends DamageSource {
