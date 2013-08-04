@@ -14,6 +14,6 @@ public class Vars {
     public static final String hud = "textures/gui/hud.png";
     
     public static final String NBTNamePhazonLV ="phazonLevels";
-    
+    public static final String NBTNamePhazonCorr="phazonCorr";
     public static final String NBTNamePhazonMob ="PHinf";
 }

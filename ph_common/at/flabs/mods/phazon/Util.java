@@ -80,10 +80,15 @@ public class Util {
     }
     
     public static boolean hasEnoughPhazon(EntityPlayer player, boolean infinity){
-        return true;
+        return player.getEntityData().getShort(Vars.NBTNamePhazonLV)>amount(infinity);
     }
     public static void removePhazon(EntityPlayer player, boolean infinity){
-        
+        short s = player.getEntityData().getShort(Vars.NBTNamePhazonLV);
+        s -= amount(infinity);
+        player.getEntityData().setShort(Vars.NBTNamePhazonLV,s);
+    }
+    private static int amount(boolean inf){
+        return inf ? 25 :50;
     }
     
     public static class DamageSourcePhazon extends DamageSource {

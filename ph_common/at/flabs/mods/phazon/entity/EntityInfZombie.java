@@ -11,7 +11,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityLivingData;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
@@ -83,8 +82,8 @@ public class EntityInfZombie extends EntityMob
     {
         super.func_110147_ax();
         this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.23000000417232513D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(3.0D);
+        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.23000000417232513D*1.5D);
+        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(6.0D);
         this.func_110140_aT().func_111150_b(field_110186_bp).func_111128_a(this.rand.nextDouble() * 0.10000000149011612D);
     }
 
@@ -587,26 +586,4 @@ public class EntityInfZombie extends EntityMob
 
         return i;
     }
-
-class EntityInfZombieold extends EntityInfZombie{
-
-    public EntityInfZombieold(World world) {
-        super(world);
-        this.getEntityData().setBoolean("PHinf", true);
-    }
-    public EntityInfZombieold(EntityInfZombie ep){
-        this(ep.worldObj);
-        this.setPosition(ep.posX, ep.posY, ep.posZ);
-        ItemStack[] inv=ep.getLastActiveItems();
-        for (int i=0;i<inv.length;i++){
-            this.setCurrentItemOrArmor(i, inv[i]);
-        }
-        this.setVillager(ep.isVillager());
-    }
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEFINED;
-    }
-    
-}
 }

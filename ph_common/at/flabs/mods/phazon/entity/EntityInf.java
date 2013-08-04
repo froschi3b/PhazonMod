@@ -15,7 +15,7 @@ public abstract class EntityInf extends EntityMob {
         super.func_110147_ax();
         this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
         this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.23000000417232513D*1.5D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(3.0D);
+        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(6.0D);
     }
     /**
      * Returns true if the newer Entity AI code should be run
