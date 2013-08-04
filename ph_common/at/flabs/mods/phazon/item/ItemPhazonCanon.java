@@ -40,6 +40,7 @@ public class ItemPhazonCanon extends Item {
                 f = 1.0F;
             }
             
+            
             EntityPlasma entityplasma = new EntityPlasma(world, ep, f * 2.0F);
             
             if (f == 1.0F) {
