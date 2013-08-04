@@ -26,6 +26,7 @@ public class EventHandle {
             if(renderedBossHealth){
                 y=20;
             }
+            
             short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
             int wid=(int) (s/500d*128d);
             
