@@ -65,7 +65,7 @@ public class ItemPhazonCanon extends Item {
             }
             
             is.damageItem(1, ep);
-            world.playSoundAtEntity(ep, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+            world.playSoundAtEntity(ep, "random.explode", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
             
             if (!ep.capabilities.isCreativeMode) {
                 Util.removePhazon(ep, flag);

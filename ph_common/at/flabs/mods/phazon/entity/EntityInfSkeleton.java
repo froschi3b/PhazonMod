@@ -269,7 +269,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
         this.tasks.removeTask(this.aiArrowAttack);
         ItemStack itemstack = this.getHeldItem();
 
-        if (itemstack != null && itemstack.itemID == Item.bow.itemID)
+        if (itemstack != null && (itemstack.itemID == PhazonMod.instance.phazonCanon.itemID||itemstack.itemID == Item.bow.itemID))
         {
             this.tasks.addTask(4, this.aiArrowAttack);
         }
@@ -304,7 +304,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
             entityarrow.setFire(100);
         }
 
-        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound("random.explode", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityarrow);
     }
 
