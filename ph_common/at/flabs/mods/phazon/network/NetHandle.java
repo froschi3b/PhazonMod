@@ -1,5 +1,10 @@
 package at.flabs.mods.phazon.network;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.util.Random;
+
 import at.flabs.mods.phazon.PhazonMod;
 import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
@@ -22,6 +27,16 @@ public class NetHandle implements ITinyPacketHandler,IConnectionHandler{
         if(mapData.uniqueID==0){
             short val=(short)( ((mapData.itemData[1]&0xFF)<<8) | (mapData.itemData[0]&0xFF) );
             handler.getPlayer().getEntityData().setShort(Vars.NBTNamePhazonLV, val);
+        }else if(mapData.uniqueID==1){
+            for(int i=0;i<50;i++){
+                DataInputStream in = new DataInputStream(new ByteArrayInputStream(mapData.itemData));
+                
+                Random r = new Random(System.nanoTime());
+                try {
+                    handler.getPlayer().worldObj.spawnParticle("smoke", in.readInt()+r.nextDouble(), in.readInt()+r.nextDouble(), in.readInt()+r.nextDouble(), 0, 0.5, 0);
+                } catch (IOException e) {
+                }
+            }
         }
     }
 

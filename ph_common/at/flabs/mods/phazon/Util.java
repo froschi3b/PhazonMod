@@ -1,5 +1,10 @@
 package at.flabs.mods.phazon;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.Entity; 
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -8,6 +13,7 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
@@ -23,6 +29,18 @@ public class Util {
     public static byte[] toBytes(short s) {
         return new byte[] { (byte) (s & 0x00FF), (byte) ((s & 0xFF00) >> 8) };
     }
+    public static void sendPat(int x,int y,int z, int did){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataOutputStream out = new DataOutputStream(baos);
+        try {
+            out.writeInt(x);
+            out.writeInt(y);
+            out.writeInt(z);
+            Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 1, baos.toByteArray());
+            PacketDispatcher.sendPacketToAllAround(x, y, z, 64, did, pckt);
+        } catch (IOException e) {
+        }
+    }
     public static boolean setEntityInfected(World world, int x, int y, int z, Entity entity) {
         if (!entity.getEntityData().hasKey(Vars.NBTNamePhazonMob)) {
             if (entity instanceof EntityPig) {
@@ -31,7 +49,7 @@ public class Util {
                 
                 EntityInfPig eip = new EntityInfPig((EntityPig) entity);
                 world.spawnEntityInWorld(eip);
-                world.spawnParticle("smoke", x+0.5, y+0.5, z+0.5, 0, 0.5, 0);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             if (entity instanceof EntityCow) {
