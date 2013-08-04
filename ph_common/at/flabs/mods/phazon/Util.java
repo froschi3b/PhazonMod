@@ -7,6 +7,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
@@ -78,6 +79,9 @@ public class Util {
         return true;
     }
     
+    public static boolean hasEnoughPhazon(EntityPlayer player){
+        return true;
+    }
     
     public static class DamageSourcePhazon extends DamageSource {
         
