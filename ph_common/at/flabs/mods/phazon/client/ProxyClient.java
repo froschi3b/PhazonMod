@@ -15,7 +15,6 @@ public class ProxyClient extends ProxyCommon {
         RenderingRegistry.registerEntityRenderingHandler(EntityInfZombie.class, new RenderInfZombie());
         RenderingRegistry.registerEntityRenderingHandler(EntityInfSkeleton.class, new RenderInfSkeleton());
         
-        
         RenderingRegistry.registerEntityRenderingHandler(EntityPlasma.class, new RenderPlasma());
     }
 }
