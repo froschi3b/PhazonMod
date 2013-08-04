@@ -66,6 +66,7 @@ public class PhazonMod {
         
         phazonDrop = new ItemPhazonDrop(phazonDropId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
         phazonCure = new ItemBucketCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonCure);
+        phazonCanon = (ItemPhazonCanon) new ItemPhazonCanon(phazonCanonId).setUnlocalizedName(Vars.unlocalizedPhazonCanon);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
         

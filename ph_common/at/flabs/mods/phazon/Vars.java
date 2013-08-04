@@ -8,6 +8,7 @@ public class Vars {
     public static final String unlocalizedPhazonBlock="phazonBlock";
     public static final String unlocalizedPhazonDrop="phazonDrop";
     public static final String unlocalizedPhazonCure="phazonCure";
+    public static final String unlocalizedPhazonCanon="phazonCanon";
     public static final String en_US = "/assets/phazonmod/lang/en_US.lang";
     
     public static final String hud = "textures/gui/hud.png";
