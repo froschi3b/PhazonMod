@@ -1,8 +1,9 @@
 package at.flabs.mods.phazon.client;
 
+import net.minecraftforge.client.MinecraftForgeClient;
+import at.flabs.mods.phazon.PhazonMod;
 import at.flabs.mods.phazon.ProxyCommon;
 import at.flabs.mods.phazon.entity.*;
-
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ProxyClient extends ProxyCommon {
@@ -16,5 +17,6 @@ public class ProxyClient extends ProxyCommon {
         RenderingRegistry.registerEntityRenderingHandler(EntityInfSkeleton.class, new RenderInfSkeleton());
         
         RenderingRegistry.registerEntityRenderingHandler(EntityPlasma.class, new RenderPlasma());
+        MinecraftForgeClient.registerItemRenderer(PhazonMod.instance.phazonCanon.itemID, new RenderPCanon());
     }
 }
