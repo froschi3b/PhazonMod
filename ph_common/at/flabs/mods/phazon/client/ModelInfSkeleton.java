@@ -12,4 +12,5 @@ public class ModelInfSkeleton extends ModelSkeleton{
     {
         this.aimedBow = ((EntityInfSkeleton)par1EntityLivingBase).getSkeletonType() == 1;
     }
+    
 }
