@@ -223,7 +223,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
     protected void addRandomArmor()
     {
         super.addRandomArmor();
-        this.setCurrentItemOrArmor(0, new ItemStack(Item.bow));
+        this.setCurrentItemOrArmor(0, new ItemStack(PhazonMod.instance.phazonCanon));
     }
 
     public EntityLivingData func_110161_a(EntityLivingData par1EntityLivingData)
