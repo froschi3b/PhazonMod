@@ -385,7 +385,9 @@ public class EntityPlasma extends Entity implements IProjectile {
     }
     
     public void onHitGround(int x, int y, int z) {
-        
+        this.setDead();
+        float f = 0F;
+        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
     }
     
     /**
