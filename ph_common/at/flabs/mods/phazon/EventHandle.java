@@ -21,6 +21,8 @@ public class EventHandle {
             res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
             int width=res.getScaledWidth();
             //int height=res.getScaledHeight();
+            int imgw=136;
+            int imgh=19;
             
             int y = 0;
             if(renderedBossHealth){
@@ -28,11 +30,13 @@ public class EventHandle {
             }
             
             short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
-            int wid=(int) (s/500d*128d);
+            int phLv=(int) (s/500d*imgw);
+            int phCo=imgw;
             
             mc.renderEngine.func_110577_a(guiTex);
-            mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 16, wid, 16);
-            mc.ingameGUI.drawTexturedModalRect(width/2-64, y, 0, 0, 128, 16);
+            mc.ingameGUI.drawTexturedModalRect(width/2-(imgw/2), y, 0, imgh, phLv, imgh);
+            mc.ingameGUI.drawTexturedModalRect(width/2-(imgw/2), y, 0, imgh*2, phCo, imgh);
+            mc.ingameGUI.drawTexturedModalRect(width/2-(imgw/2), y, 0, 0, imgw, imgh);
             mc.func_110434_K().func_110577_a(Gui.field_110324_m);
             renderedBossHealth=false;
         }else if(evt.type == RenderGameOverlayEvent.ElementType.BOSSHEALTH){
