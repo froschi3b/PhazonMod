@@ -206,6 +206,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
         {
             this.dropItem(Item.bone.itemID, 1);
         }
+        this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
 
     protected void dropRareDrop(int par1)

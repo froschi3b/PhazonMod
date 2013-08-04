@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.entity;
 
+import at.flabs.mods.phazon.PhazonMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -27,6 +28,7 @@ import net.minecraft.entity.ai.attributes.AttributeInstance;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -65,6 +67,16 @@ public class EntityInfZombie extends EntityMob
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
+        this.getEntityData().setBoolean("PHinf", true);
+    }
+    public EntityInfZombie(EntityZombie ep){
+        this(ep.worldObj);
+        this.setPosition(ep.posX, ep.posY, ep.posZ);
+        ItemStack[] inv=ep.getLastActiveItems();
+        for (int i=0;i<inv.length;i++){
+            this.setCurrentItemOrArmor(i, inv[i]);
+        }
+        this.setVillager(ep.isVillager());
     }
 
     protected void func_110147_ax()
@@ -148,47 +160,6 @@ public class EntityInfZombie extends EntityMob
     public void setVillager(boolean par1)
     {
         this.getDataWatcher().updateObject(13, Byte.valueOf((byte)(par1 ? 1 : 0)));
-    }
-
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    public void onLivingUpdate()
-    {
-        if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
-        {
-            float f = this.getBrightness(1.0F);
-
-            if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
-            {
-                boolean flag = true;
-                ItemStack itemstack = this.getCurrentItemOrArmor(4);
-
-                if (itemstack != null)
-                {
-                    if (itemstack.isItemStackDamageable())
-                    {
-                        itemstack.setItemDamage(itemstack.getItemDamageForDisplay() + this.rand.nextInt(2));
-
-                        if (itemstack.getItemDamageForDisplay() >= itemstack.getMaxDamage())
-                        {
-                            this.renderBrokenItemStack(itemstack);
-                            this.setCurrentItemOrArmor(4, (ItemStack)null);
-                        }
-                    }
-
-                    flag = false;
-                }
-
-                if (flag)
-                {
-                    this.setFire(8);
-                }
-            }
-        }
-
-        super.onLivingUpdate();
     }
 
     /**
@@ -318,13 +289,10 @@ public class EntityInfZombie extends EntityMob
     {
         return Item.rottenFlesh.itemID;
     }
-
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
+    protected void dropFewItems(boolean par1, int par2)
     {
-        return EnumCreatureAttribute.UNDEAD;
+        this.dropItem(getDropItemId(), 1);
+        this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
 
     protected void dropRareDrop(int par1)
@@ -445,7 +413,7 @@ public class EntityInfZombie extends EntityMob
 
         if (par1EntityLivingData1 == null)
         {
-            par1EntityLivingData1 = new EntityZombieGroupData(this, this.worldObj.rand.nextFloat() < 0.05F, this.worldObj.rand.nextFloat() < 0.05F, (EntityZombieINNER1)null);
+            par1EntityLivingData1 = new EntityZombieGroupData(this, this.worldObj.rand.nextFloat() < 0.05F, this.worldObj.rand.nextFloat() < 0.05F, (EntityInfZombie)null);
         }
 
         if (par1EntityLivingData1 instanceof EntityZombieGroupData)

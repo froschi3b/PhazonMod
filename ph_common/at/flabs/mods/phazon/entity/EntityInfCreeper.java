@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.entity;
 
+import at.flabs.mods.phazon.PhazonMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -218,6 +219,11 @@ public class EntityInfCreeper extends EntityInf {
     protected int getDropItemId()
     {
         return Item.gunpowder.itemID;
+    }
+    protected void dropFewItems(boolean par1, int par2)
+    {
+        this.dropItem(getDropItemId(), 1);
+        this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
 
     /**

@@ -18,6 +18,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import at.flabs.mods.phazon.PhazonMod;
 import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
@@ -34,15 +35,23 @@ public class BlockPhazon extends Block {
         this.blockRed = icr.registerIcon(Vars.texdir + ":phazonRed");
     }
     
+    public int damageDropped(int meta) {
+        return meta;
+    }
+    
+    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
+        return true;
+    }
+    public boolean isBlockNormalCube(World world, int x, int y, int z)
+    {
+        return true;
+    }
+    
     public Icon getIcon(int side, int meta) {
         if (meta == 1) {
             return this.blockRed;
         }
         return this.blockIcon;
-    }
-    
-    public boolean isBlockNormalCube(World world, int x, int y, int z) {
-        return false;
     }
     
     public void updateTick(World world, int x, int y, int z, Random random) {
@@ -64,10 +73,12 @@ public class BlockPhazon extends Block {
             }
         }
     }
-    public static int[] eatlist = {Block.grass.blockID, Block.dirt.blockID, Block.sand.blockID, Block.wood.blockID, Block.leaves.blockID};
+    
+    public static int[] eatlist = { Block.grass.blockID, Block.dirt.blockID, Block.sand.blockID, Block.wood.blockID, Block.leaves.blockID };
+    
     public static boolean eat(int id) {
-        for(int i : eatlist){
-            if(id==i){
+        for (int i : eatlist) {
+            if (id == i) {
                 return true;
             }
         }

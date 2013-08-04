@@ -7,9 +7,9 @@ class EntityZombieGroupData implements EntityLivingData
     public boolean field_142048_a;
     public boolean field_142046_b;
 
-    final EntityZombie field_142047_c;
+    final EntityInfZombie field_142047_c;
 
-    private EntityZombieGroupData(EntityZombie par1EntityZombie, boolean par2, boolean par3)
+    private EntityZombieGroupData(EntityInfZombie par1EntityZombie, boolean par2, boolean par3)
     {
         this.field_142047_c = par1EntityZombie;
         this.field_142048_a = false;
@@ -18,7 +18,7 @@ class EntityZombieGroupData implements EntityLivingData
         this.field_142046_b = par3;
     }
 
-    EntityZombieGroupData(EntityZombie par1EntityZombie, boolean par2, boolean par3, EntityZombieINNER1 par4EntityZombieINNER1)
+    EntityZombieGroupData(EntityInfZombie par1EntityZombie, boolean par2, boolean par3, EntityInfZombie par4EntityZombieINNER1)
     {
         this(par1EntityZombie, par2, par3);
     }
