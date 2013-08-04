@@ -236,9 +236,9 @@ public class EntityPlasma extends Entity implements IProjectile {
                 DamageSource damagesource = null;
                 
                 if (this.shootingEntity == null) {
-                    damagesource = (new EntityDamageSourceIndirect("arrow", this, this)).setProjectile();
+                    damagesource = (new EntityDamageSourceIndirect("phazon", this, this)).setProjectile();
                 } else {
-                    damagesource = (new EntityDamageSourceIndirect("arrow", this, this.shootingEntity)).setProjectile();
+                    damagesource = (new EntityDamageSourceIndirect("phazon", this, this.shootingEntity)).setProjectile();
                 }
                 
                 if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman)) {
@@ -283,6 +283,8 @@ public class EntityPlasma extends Entity implements IProjectile {
                     this.prevRotationYaw += 180.0F;
                     this.ticksInAir = 0;
                 }
+                float f = 0F;
+                this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
             } else {
                 this.xTile = movingobjectposition.blockX;
                 this.yTile = movingobjectposition.blockY;

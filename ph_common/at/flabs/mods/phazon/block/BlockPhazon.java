@@ -44,7 +44,7 @@ public class BlockPhazon extends Block {
     }
     public boolean isBlockNormalCube(World world, int x, int y, int z)
     {
-        return true;
+        return false;
     }
     
     public Icon getIcon(int side, int meta) {
