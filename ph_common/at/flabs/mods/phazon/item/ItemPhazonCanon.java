@@ -63,6 +63,7 @@ public class ItemPhazonCanon extends Item {
                 entityplasma.setFire(100);
             }
             
+            
             is.damageItem(1, ep);
             world.playSoundAtEntity(ep, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
             
