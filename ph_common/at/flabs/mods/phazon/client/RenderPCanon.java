@@ -29,22 +29,8 @@ public class RenderPCanon implements IItemRenderer {
     
     @Override
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-
-        float f00 = 1/0.375F;
-        GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
-        GL11.glRotatef(-60.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glScalef(f00, f00, f00);
-        GL11.glTranslatef(-0.25F, -0.1875F, 0.1875F);
         
         EntityLivingBase par1EntityLivingBase = (EntityLivingBase) data[1];
-        float f0 = 0.625F;
-        GL11.glTranslatef(0.0F, 0.125F, 0.3125F);
-        GL11.glRotatef(-20.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glScalef(f0, -f0, f0);
-        GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
-        GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(90f,0f,0f,1f);
         
         TextureManager texturemanager = Minecraft.getMinecraft().func_110434_K();
         

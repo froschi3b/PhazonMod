@@ -17,6 +17,6 @@ public class ProxyClient extends ProxyCommon {
         RenderingRegistry.registerEntityRenderingHandler(EntityInfSkeleton.class, new RenderInfSkeleton());
         
         RenderingRegistry.registerEntityRenderingHandler(EntityPlasma.class, new RenderPlasma());
-        MinecraftForgeClient.registerItemRenderer(PhazonMod.instance.phazonCanon.itemID, new RenderPCanon());
+        //MinecraftForgeClient.registerItemRenderer(PhazonMod.instance.phazonCanon.itemID, new RenderPCanon());
     }
 }
