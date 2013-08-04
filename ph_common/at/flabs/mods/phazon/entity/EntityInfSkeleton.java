@@ -2,6 +2,7 @@ package at.flabs.mods.phazon.entity;
 
 import java.util.Calendar;
 
+import at.flabs.mods.phazon.PhazonMod;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -9,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityLivingData;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
@@ -23,15 +23,13 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.AchievementList;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 
@@ -59,6 +57,20 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
         }
     }
 
+    public EntityInfSkeleton(EntitySkeleton ep) {
+        this(ep.worldObj);
+        this.setPosition(ep.posX, ep.posY, ep.posZ);
+        ItemStack[] inv = ep.getLastActiveItems();
+        if(inv[0]!=null){
+            if(inv[0].getItem()==Item.bow){
+                inv[0].itemID=PhazonMod.instance.phazonCanon.itemID;
+            }
+        }
+        for (int i = 0; i < inv.length; i++) {
+            this.setCurrentItemOrArmor(i, inv[i]);
+        }
+        this.setSkeletonType(ep.getSkeletonType());
+    }
     protected void func_110147_ax()
     {
         super.func_110147_ax();
@@ -129,14 +141,6 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
     }
 
     /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
-
-    /**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
      */
@@ -161,26 +165,6 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
         {
             EntityCreature entitycreature = (EntityCreature)this.ridingEntity;
             this.renderYawOffset = entitycreature.renderYawOffset;
-        }
-    }
-
-    /**
-     * Called when the mob's health reaches 0.
-     */
-    public void onDeath(DamageSource par1DamageSource)
-    {
-        super.onDeath(par1DamageSource);
-
-        if (par1DamageSource.getSourceOfDamage() instanceof EntityArrow && par1DamageSource.getEntity() instanceof EntityPlayer)
-        {
-            EntityPlayer entityplayer = (EntityPlayer)par1DamageSource.getEntity();
-            double d0 = entityplayer.posX - this.posX;
-            double d1 = entityplayer.posZ - this.posZ;
-
-            if (d0 * d0 + d1 * d1 >= 2500.0D)
-            {
-                entityplayer.triggerAchievement(AchievementList.snipeSkeleton);
-            }
         }
     }
 
@@ -303,7 +287,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
      */
     public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
+        EntityPlasma entityarrow = new EntityPlasma(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
         int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
         int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
         entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));

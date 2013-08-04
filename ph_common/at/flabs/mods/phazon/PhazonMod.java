@@ -7,11 +7,12 @@ import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;
 import at.flabs.mods.phazon.entity.EntityInfPig;
-import at.flabs.mods.phazon.entity.EntityInfSkeletonold;
+import at.flabs.mods.phazon.entity.EntityInfSkeleton;
 import at.flabs.mods.phazon.entity.EntityInfZombie;
 import at.flabs.mods.phazon.entity.EntityPlasma;
 import at.flabs.mods.phazon.item.ItemBucketCure;
 import at.flabs.mods.phazon.item.ItemPhazon;
+import at.flabs.mods.phazon.item.ItemPhazonCanon;
 import at.flabs.mods.phazon.item.ItemPhazonDrop;
 import at.flabs.mods.phazon.network.NetHandle;
 import net.minecraft.block.Block;
@@ -41,6 +42,7 @@ public class PhazonMod {
     public static ProxyCommon proxy;
     public Block phazonBlock;
     public Item phazonDrop,phazonCure;
+    public ItemPhazonCanon phazonCanon;
     
     @EventHandler
     public void perInit(FMLPreInitializationEvent evz) {
@@ -87,8 +89,8 @@ public class PhazonMod {
         EntityRegistry.registerGlobalEntityID(EntityInfZombie.class, "phzom", ifzoid);
         EntityRegistry.registerModEntity(EntityInfZombie.class, "phzom", ifzoid, this, 50, 1, false);
         int ifskid = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(EntityInfSkeletonold.class, "phske", ifskid);
-        EntityRegistry.registerModEntity(EntityInfSkeletonold.class, "phske", ifskid, this, 50, 1, false);
+        EntityRegistry.registerGlobalEntityID(EntityInfSkeleton.class, "phske", ifskid);
+        EntityRegistry.registerModEntity(EntityInfSkeleton.class, "phske", ifskid, this, 50, 1, false);
         int plasmid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityPlasma.class, "plas", plasmid);
         EntityRegistry.registerModEntity(EntityPlasma.class, "plas", plasmid, this, 64, 1, false);

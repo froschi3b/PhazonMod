@@ -1,7 +1,7 @@
 package at.flabs.mods.phazon.client;
 
 import at.flabs.mods.phazon.Vars;
-import at.flabs.mods.phazon.entity.EntityInfSkeletonold;
+import at.flabs.mods.phazon.entity.EntityInfSkeleton;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelSkeleton;
@@ -23,7 +23,7 @@ public class RenderInfSkeleton extends RenderBiped
         super(new ModelSkeleton(), 0.5F);
     }
 
-    protected void preRenderCallback(EntityInfSkeletonold par1EntitySkeleton, float par2)
+    protected void preRenderCallback(EntityInfSkeleton par1EntitySkeleton, float par2)
     {
         if (par1EntitySkeleton.getSkeletonType() == 1)
         {
@@ -36,14 +36,14 @@ public class RenderInfSkeleton extends RenderBiped
         GL11.glTranslatef(0.09375F, 0.1875F, 0.0F);
     }
 
-    protected ResourceLocation func_110860_a(EntityInfSkeletonold par1EntitySkeleton)
+    protected ResourceLocation func_110860_a(EntityInfSkeleton par1EntitySkeleton)
     {
         return tex;
     }
 
     protected ResourceLocation func_110856_a(EntityLiving par1EntityLiving)
     {
-        return this.func_110860_a((EntityInfSkeletonold)par1EntityLiving);
+        return this.func_110860_a((EntityInfSkeleton)par1EntityLiving);
     }
 
     /**
@@ -52,11 +52,11 @@ public class RenderInfSkeleton extends RenderBiped
      */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        this.preRenderCallback((EntityInfSkeletonold)par1EntityLivingBase, par2);
+        this.preRenderCallback((EntityInfSkeleton)par1EntityLivingBase, par2);
     }
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110860_a((EntityInfSkeletonold)par1Entity);
+        return this.func_110860_a((EntityInfSkeleton)par1Entity);
     }
 }
