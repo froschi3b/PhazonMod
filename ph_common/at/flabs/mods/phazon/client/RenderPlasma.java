@@ -15,9 +15,10 @@ public class RenderPlasma extends Render {
     
     @Override
     public void doRender(Entity entity, double x, double y, double z, float f, float f1) {
+        this.renderManager.renderEngine.func_110577_a(func_110775_a(entity));
         GL11.glPushMatrix();
         GL11.glTranslatef((float)x, (float)y, (float)z);
-        model.render(entity, 0f, 0f, 0f, 0f, 0f, 0f);
+        model.render(entity, 0f, entity.rotationPitch, entity.rotationYaw, 0f, 0f, 0.125f);
         GL11.glPopMatrix();
     }
     
