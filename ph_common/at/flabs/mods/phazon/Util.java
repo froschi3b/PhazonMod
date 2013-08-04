@@ -13,7 +13,7 @@ import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;
 import at.flabs.mods.phazon.entity.EntityInfPig;
-import at.flabs.mods.phazon.entity.EntityInfSkeleton;
+import at.flabs.mods.phazon.entity.EntityInfSkeletonold;
 import at.flabs.mods.phazon.entity.EntityInfZombie;
 
 public class Util {
@@ -69,7 +69,7 @@ public class Util {
                 entity.setDead();
                 entity.getEntityData().setBoolean(Vars.NBTNamePhazonMob, true);
                 
-                EntityInfSkeleton eip = new EntityInfSkeleton((EntitySkeleton) entity);
+                EntityInfSkeletonold eip = new EntityInfSkeletonold((EntitySkeleton) entity);
                 world.spawnEntityInWorld(eip);
                 return true;
             }
