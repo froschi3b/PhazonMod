@@ -24,7 +24,6 @@ public class ItemPhazonCanon extends Item {
         this.maxStackSize = 1;
         this.setMaxDamage(384);
         this.setCreativeTab(CreativeTabs.tabCombat);
-        this.setFull3D();
         this.func_111206_d(Vars.texdir + ":" + Vars.unlocalizedPhazonCanon);
     }
     
