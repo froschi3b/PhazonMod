@@ -287,11 +287,11 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob
         EntityPlasma entityarrow = new EntityPlasma(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
         int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
         int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-        entityarrow.setDamage((double)(par2 * 4.0F) + this.rand.nextGaussian() * 0.5D + (double)((float)this.worldObj.difficultySetting * 0.22F));
+        entityarrow.setDamage((double)(par2 * 6.0F) + this.rand.nextGaussian() + (double)((float)this.worldObj.difficultySetting * 0.22F));
 
         if (i > 0)
         {
-            entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
+            entityarrow.setDamage(entityarrow.getDamage() + (double)i + 1.5D);
         }
 
         if (j > 0)

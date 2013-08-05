@@ -236,9 +236,9 @@ public class EntityPlasma extends Entity implements IProjectile {
                 DamageSource damagesource = null;
                 
                 if (this.shootingEntity == null) {
-                    damagesource = (new EntityDamageSourceIndirect("phazon", this, this)).setProjectile();
+                    damagesource = (new EntityDamageSourceIndirect("phazon.plasma", this, this)).setProjectile();
                 } else {
-                    damagesource = (new EntityDamageSourceIndirect("phazon", this, this.shootingEntity)).setProjectile();
+                    damagesource = (new EntityDamageSourceIndirect("phazon.plasma", this, this.shootingEntity)).setProjectile();
                 }
                 
                 if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman)) {

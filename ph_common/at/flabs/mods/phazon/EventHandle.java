@@ -49,13 +49,14 @@ public class EventHandle {
     @ForgeSubscribe
     public void onDeath(LivingDeathEvent evt){
         if(evt.entityLiving instanceof EntityPlayer){
+            System.out.println(evt.source.damageType);
             if (evt.source.damageType.startsWith("phazon")){
                 EntityInfPlayer eip = new EntityInfPlayer(evt.entityLiving.worldObj);
                 eip.posX=evt.entityLiving.posX;
                 eip.posY=evt.entityLiving.posY;
                 eip.posZ=evt.entityLiving.posZ;
                 evt.entityLiving.worldObj.spawnEntityInWorld(eip);
-                
+                System.out.println("Spawned "+eip);
             }
         }
     }
