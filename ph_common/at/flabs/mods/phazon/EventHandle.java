@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon;
 
+import at.flabs.mods.phazon.entity.EntityInfPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -49,7 +50,11 @@ public class EventHandle {
     public void onDeath(LivingDeathEvent evt){
         if(evt.entityLiving instanceof EntityPlayer){
             if (evt.source.damageType.startsWith("phazon")){
-                //TODO spawn superzombie
+                EntityInfPlayer eip = new EntityInfPlayer(evt.entityLiving.worldObj);
+                eip.posX=evt.entityLiving.posX;
+                eip.posY=evt.entityLiving.posY;
+                eip.posZ=evt.entityLiving.posZ;
+                evt.entityLiving.worldObj.spawnEntityInWorld(eip);
             }
         }
     }

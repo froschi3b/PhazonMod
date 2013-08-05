@@ -7,6 +7,7 @@ import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;
 import at.flabs.mods.phazon.entity.EntityInfPig;
+import at.flabs.mods.phazon.entity.EntityInfPlayer;
 import at.flabs.mods.phazon.entity.EntityInfSkeleton;
 import at.flabs.mods.phazon.entity.EntityInfZombie;
 import at.flabs.mods.phazon.entity.EntityPlasma;
@@ -94,6 +95,9 @@ public class PhazonMod {
         int ifskid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfSkeleton.class, "phske", ifskid);
         EntityRegistry.registerModEntity(EntityInfSkeleton.class, "phske", ifskid, this, 50, 1, false);
+        int ifplid = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityInfPlayer.class, "phpl", ifplid);
+        EntityRegistry.registerModEntity(EntityInfPlayer.class, "phpl", ifplid, this, 50, 1, false);
         int plasmid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityPlasma.class, "plas", plasmid);
         EntityRegistry.registerModEntity(EntityPlasma.class, "plas", plasmid, this, 64, 1, false);
