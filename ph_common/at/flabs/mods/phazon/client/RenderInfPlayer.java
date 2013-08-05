@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import at.flabs.mods.phazon.Vars;
 
 public class RenderInfPlayer extends RenderInfSkeleton {
-    private static final ResourceLocation tex = new ResourceLocation(Vars.texdir, "textures/entity/infskeleton.png");
+    private static final ResourceLocation tex = new ResourceLocation(Vars.texdir, "textures/entity/infplayer.png");
     
     public RenderInfPlayer(){
         super(new ModelBiped());

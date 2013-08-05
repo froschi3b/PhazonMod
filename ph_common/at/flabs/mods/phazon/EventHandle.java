@@ -1,6 +1,7 @@
 package at.flabs.mods.phazon;
 
 import at.flabs.mods.phazon.entity.EntityInfPlayer;
+import at.flabs.mods.phazon.entity.EntityInfZombie;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -52,7 +53,7 @@ public class EventHandle {
         if(evt.entityLiving instanceof EntityPlayer){
             System.out.println(evt.source.damageType);
             if (evt.source.damageType.startsWith("phazon")){
-                EntityInfPlayer eip = new EntityInfPlayer(evt.entityLiving.worldObj);
+                EntityInfZombie eip = new EntityInfZombie(evt.entityLiving.worldObj);
                 eip.posX=evt.entityLiving.posX;
                 eip.posY=evt.entityLiving.posY;
                 eip.posZ=evt.entityLiving.posZ;
