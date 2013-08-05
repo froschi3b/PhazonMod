@@ -1,16 +1,12 @@
 package at.flabs.mods.phazon;
 
-import at.flabs.mods.phazon.entity.EntityInfPlayer;
-import at.flabs.mods.phazon.entity.EntityInfZombie;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.boss.BossStatus;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public class EventHandle {
     private static final ResourceLocation guiTex = new ResourceLocation(Vars.texdir,Vars.hud);
@@ -45,21 +41,6 @@ public class EventHandle {
         }else if(evt.type == RenderGameOverlayEvent.ElementType.BOSSHEALTH){
             if(BossStatus.bossName != null && BossStatus.statusBarLength > 0){
                 renderedBossHealth=true;
-            }
-        }
-    }
-    @ForgeSubscribe
-    public void onDeath(LivingDeathEvent evt){
-        if(evt.entityLiving instanceof EntityPlayer){
-            System.out.println(evt.source.damageType);
-            if (evt.source.damageType.startsWith("phazon")){
-                EntityInfZombie eip = new EntityInfZombie(evt.entityLiving.worldObj);
-                eip.posX=evt.entityLiving.posX;
-                eip.posY=evt.entityLiving.posY;
-                eip.posZ=evt.entityLiving.posZ;
-                evt.entityLiving.worldObj.spawnEntityInWorld(eip);
-                System.out.println("Spawned "+eip);
-                
             }
         }
     }

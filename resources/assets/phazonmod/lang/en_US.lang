@@ -1,6 +1,12 @@
 tile.phazonBlock.phazonBlock0.name=Blue Phazon
-tile.phazonBlock.phazonBlock1.name=Red Phazon
 item.phazonDrop.name=Phazon Drop
 item.phazonCure.name=Phazon Cure
 item.phazonCure.sub=Cures 20% Corruption
-death.attack.phazon=%1$s corrupted and turned into a Phazon Zombie
+death.attack.phazon=%1$s corrupted
+death.attack.phazon.plasma=%1$s was corrupted by %2$s
+entity.phcow.name=Corrupted Cow
+entity.phpig.name=Corrupted Pig
+entity.phchick.name=Corrupted Chicken
+entity.phcre.name=Corrupted Creeper
+entity.phzom.name=Corrupted Zombie
+entity.phske.name=Corrupted Skeleton

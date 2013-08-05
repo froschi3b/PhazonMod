@@ -64,7 +64,7 @@ public class EntityInfSkeleton extends EntityMob implements IRangedAttackMob {
     
     protected void func_110147_ax() {
         super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.5D);
+        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.25D);
     }
     
     protected void entityInit() {
