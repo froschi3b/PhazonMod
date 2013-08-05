@@ -55,6 +55,7 @@ public class EventHandle {
                 eip.posY=evt.entityLiving.posY;
                 eip.posZ=evt.entityLiving.posZ;
                 evt.entityLiving.worldObj.spawnEntityInWorld(eip);
+                
             }
         }
     }
