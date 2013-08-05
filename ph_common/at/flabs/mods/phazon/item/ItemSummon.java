@@ -17,7 +17,6 @@ public class ItemSummon extends Item {
     }
     
     public ItemStack onEaten(ItemStack is, World world, EntityPlayer ep) {
-        ep.getEntityData().setShort(Vars.NBTNamePhazonCorr,(short) 375);
         if (!world.isRemote) {
             double x = ep.posX -50D + world.rand.nextInt(100);
             double z = ep.posZ -50D + world.rand.nextInt(100);
