@@ -6,6 +6,7 @@ import at.flabs.mods.phazon.common.BlockPhazon;
 import at.flabs.mods.phazon.common.EventHandle;
 import at.flabs.mods.phazon.common.NetHandle;
 import at.flabs.mods.phazon.common.ProxyCommon;
+import at.flabs.mods.phazon.common.TickHandle;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;
@@ -35,6 +36,8 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = Vars.modid, name = Vars.modname, version = Vars.version)
 @NetworkMod(tinyPacketHandler = NetHandle.class, connectionHandler = NetHandle.class)
@@ -75,7 +78,9 @@ public class PhazonMod {
         summon = new ItemSummon(summonId).setUnlocalizedName(Vars.unlocalizedSummon);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
-        
+
+        TickRegistry.registerTickHandler(new TickHandle(), Side.SERVER);
+        TickRegistry.registerTickHandler(new TickHandle(), Side.CLIENT);
         MinecraftForge.EVENT_BUS.register(new EventHandle());
         
         LanguageRegistry.instance().loadLocalization(Vars.en_US, "en_US", false);

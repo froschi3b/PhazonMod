@@ -36,12 +36,12 @@ public class ItemBucketCure extends Item {
         if (!world.isRemote)
         {
             short prev=ep.getEntityData().getShort(Vars.NBTNamePhazonLV);
-            prev-=100;
+            prev-=200;
             if(prev<0){
                 prev=0;
             }
-            ep.getEntityData().setShort(Vars.NBTNamePhazonLV, prev);
-            Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, Util.toBytes(prev));
+            ep.getEntityData().setShort(Vars.NBTNamePhazonCorr, prev);
+            Packet131MapData pckt = PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 2, Util.toBytes(prev));
             PacketDispatcher.sendPacketToPlayer(pckt, (Player) ep);
         }
 

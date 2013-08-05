@@ -22,7 +22,7 @@ public class ItemPhazonCanon extends Item {
     public ItemPhazonCanon(int par1) {
         super(par1);
         this.maxStackSize = 1;
-        this.setMaxDamage(384);
+        this.setMaxDamage(2048);
         this.setCreativeTab(CreativeTabs.tabCombat);
         this.setFull3D();
         this.func_111206_d(Vars.texdir + ":" + Vars.unlocalizedPhazonCanon);
