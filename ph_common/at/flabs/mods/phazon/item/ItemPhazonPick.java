@@ -23,10 +23,9 @@ public class ItemPhazonPick extends ItemPickaxe{
     {
         super.setDamage(stack, damage);
     }
-    public boolean onBlockDestroyed(ItemStack is, World world, int x, int y, int z, int id, EntityLivingBase ep)
+    public boolean onBlockDestroyed(ItemStack is, World world, int id, int x, int y, int z, EntityLivingBase ep)
     {
-        System.out.println(world.getBlockId(x, y, z));
-        if(ep instanceof EntityPlayer && this.canHarvestBlock(Block.blocksList[id])){Util.removePhazon((EntityPlayer) ep, false);}
+        if(ep instanceof EntityPlayer && this.canHarvestBlock(Block.blocksList[id]) && Util.hasEnoughPhazon((EntityPlayer) ep, false)){Util.removePhazon((EntityPlayer) ep, false);}
         return super.onBlockDestroyed(is, world, x, y, z, id, ep);
     }
 }
