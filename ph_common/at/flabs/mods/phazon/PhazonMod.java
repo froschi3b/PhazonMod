@@ -88,8 +88,12 @@ public class PhazonMod {
         MinecraftForge.EVENT_BUS.register(new EventHandle());
         
         LanguageRegistry.instance().loadLocalization(Vars.en_US, "en_US", false);
-        
+
         GameRegistry.addRecipe(new ItemStack(phazonCure), "ddd","dbd","ddd",'d',phazonDrop,'b',Item.bucketEmpty);
+        GameRegistry.addRecipe(new ItemStack(phazonCanon), "ada","dbd","dcd",'d',phazonDrop,'b',Item.bow,'c',phazonCure);
+        GameRegistry.addRecipe(new ItemStack(phazonPick),"ppp","dsd","asa",'d',Item.diamond,'p',phazonDrop,'s',Item.stick);
+        
+        GameRegistry.addRecipe(new ItemStack(summon), "ada","drd",'d',Item.diamond,'r',Item.redstone);
         
         int ifcid = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityInfCow.class, "phcow", ifcid);

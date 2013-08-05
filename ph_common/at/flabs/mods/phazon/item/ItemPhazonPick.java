@@ -1,5 +1,6 @@
 package at.flabs.mods.phazon.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +25,8 @@ public class ItemPhazonPick extends ItemPickaxe{
     }
     public boolean onBlockDestroyed(ItemStack is, World world, int x, int y, int z, int id, EntityLivingBase ep)
     {
-        if(ep instanceof EntityPlayer){Util.removePhazon((EntityPlayer) ep, false);}
+        System.out.println(world.getBlockId(x, y, z));
+        if(ep instanceof EntityPlayer && this.canHarvestBlock(Block.blocksList[id])){Util.removePhazon((EntityPlayer) ep, false);}
         return super.onBlockDestroyed(is, world, x, y, z, id, ep);
     }
 }
