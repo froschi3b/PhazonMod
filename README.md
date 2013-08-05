@@ -5,9 +5,11 @@ The Phazon Mod adds an infection to Minecraft: Phazon
 
 ##Phazon Summon##
 
-This nifty Item is created with 3 diamonds in the following pattern:
- |D|
-D| |D
+This nifty Item is created with 3 diamonds ('D') and 1 Redstone ('R') in the following pattern:
+ |D| 
+-----
+D|R|D
+-----
  | | 
 
 If you use it, a Phazon Meteor will instantly crash within a 50 block radius of you.
@@ -52,6 +54,40 @@ Those use Phazon, but keep in mind that you can't use them if your Phazon is low
 #Phazon Canon#
 This is the same Canon the skeletons use. it uses 10% Phazon per shot.
 it does 6 hearts of damage, which is usually 1-2 hits.
+it is crafted with a Bow ('B') 5 Phazon Drops ('D') and a Phazon Cure ('C')
+ |D| 
+-----
+D|B|D
+-----
+D|C|D
 
 #Phazon Pick#
 This has the same properties as a diamond pickaxe, but uses 5% Phazon per Block
+it is crafted with 3 Phazon Drops ('D'), 2 Sticks ('S') and 2 Gold Ingots ('G')
+D|D|D
+-----
+G|S|G
+-----
+ |S| 
+
+###Configuration###
+all id's are editable in the config file
+
+###Installation Instructions###
+The mod is compiled for Minecraft 1.6.2
+
+1. Download and Install Minecraft Forge (http://files.minecraftforge.net/)
+	+ The mod was compiled using Minecraft Forge version 9.10.0.804
+2. Download the mod
+3. Place the downloaded File into the /mods directory in the .minecraft directory (for Client) or the root of the server directory (for Server)
+4. Run the client or server as usual
+
+###Compilance Instructions###
+
+1. Download , extract and install Minecraft Forge src version 9.10.0.804
+2. Download and extract (or clone) this repository
+3. go into the mcp/src/minecraft folder and drop the contents of the ph_common folder there
+4. run the recompile and then the reobfuscate script in the mcp folder
+5. go into the mcp/reobf/minecraft folder and drop the contents of the resources folder there
+6. package all contents of this folder into a zip file
+7. done

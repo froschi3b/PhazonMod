@@ -55,7 +55,7 @@ public class EventHandle {
         if(event.success){
             ItemStack curr = player.inventory.getCurrentItem();
             if(curr!=null && curr.getItem()==PhazonMod.instance.phazonPick){
-                if(!Util.hasEnoughPhazon(player, false)){
+                if(!Util.hasEnoughPhazon(player, true)){
                     event.success=false;
                 }
             }
