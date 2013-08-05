@@ -2,6 +2,7 @@ tile.phazonBlock.phazonBlock0.name=Blue Phazon
 item.phazonDrop.name=Phazon Drop
 item.phazonCanon.name=Phazon Canon
 item.phSummon.name=Summon Phazon
+item.phazonPick.name=Phazon Pickaxe
 item.phazonCure.name=Phazon Cure
 item.phazonCure.sub=Cures 20% Corruption
 death.attack.phazon=%1$s corrupted

@@ -1,13 +1,17 @@
 package at.flabs.mods.phazon.common;
 
+import at.flabs.mods.phazon.PhazonMod;
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.boss.BossStatus;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public class EventHandle {
     private static final ResourceLocation guiTex = new ResourceLocation(Vars.texdir,Vars.hud);
@@ -42,6 +46,18 @@ public class EventHandle {
         }else if(evt.type == RenderGameOverlayEvent.ElementType.BOSSHEALTH){
             if(BossStatus.bossName != null && BossStatus.statusBarLength > 0){
                 renderedBossHealth=true;
+            }
+        }
+    }
+    @ForgeSubscribe
+    public void onHarvestCheck(PlayerEvent.HarvestCheck event){
+        EntityPlayer player=event.entityPlayer;
+        if(event.success){
+            ItemStack curr = player.inventory.getCurrentItem();
+            if(curr!=null && curr.getItem()==PhazonMod.instance.phazonPick){
+                if(!Util.hasEnoughPhazon(player, false)){
+                    event.success=false;
+                }
             }
         }
     }
