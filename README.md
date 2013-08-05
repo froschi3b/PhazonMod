@@ -36,3 +36,4 @@ small tip, if one of those get hit by lighning, RUN, the explosion (and therefor
 If you touch Phazon, your Phazon bar (top of the screen) fills up.
 If the Phazon bar is full and your still touching Phazon, you take 5 hearts of damage. (kills you very quickly)
 
+If you use a Phazon Tool, you consume Phazon, but you also corrupt a little bit
