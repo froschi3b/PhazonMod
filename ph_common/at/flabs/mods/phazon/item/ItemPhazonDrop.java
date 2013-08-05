@@ -11,11 +11,7 @@ public class ItemPhazonDrop extends Item {
     
     public ItemPhazonDrop(int par1) {
         super(par1);
-        this.setCreativeTab(CreativeTabs.tabAllSearch);
+        this.setCreativeTab(CreativeTabs.tabMisc);
         this.func_111206_d(Vars.texdir + ":" + Vars.unlocalizedPhazonDrop);
-    }
-    
-    public boolean onItemUse(ItemStack is, EntityPlayer ep, World w, int x, int y, int z, int side, float xo, float yo, float zo) {
-        return false;
     }
 }

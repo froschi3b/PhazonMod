@@ -17,6 +17,7 @@ import at.flabs.mods.phazon.item.ItemBucketCure;
 import at.flabs.mods.phazon.item.ItemPhazon;
 import at.flabs.mods.phazon.item.ItemPhazonCanon;
 import at.flabs.mods.phazon.item.ItemPhazonDrop;
+import at.flabs.mods.phazon.item.ItemSummon;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -43,7 +44,7 @@ public class PhazonMod {
     @SidedProxy(clientSide = "at.flabs.mods.phazon.client.ProxyClient", serverSide = "at.flabs.mods.phazon.ProxyCommon")
     public static ProxyCommon proxy;
     public Block phazonBlock;
-    public Item phazonDrop,phazonCure;
+    public Item phazonDrop,phazonCure,summon;
     public ItemPhazonCanon phazonCanon;
     
     @EventHandler
@@ -53,12 +54,14 @@ public class PhazonMod {
         int phazonDropId = 0;
         int phazonCureId = 0;
         int phazonCanonId = 0;
+        int summonId = 0;
         try {
             config.load();
             phazonBlockId = config.getBlock("Phazon", 1011).getInt();
             phazonDropId = config.getItem("PhazonDrop", 10110).getInt();
             phazonCureId = config.getItem("PhazonCure", 10111).getInt();
             phazonCanonId = config.getItem("PhazonCanon", 10112).getInt();
+            summonId = config.getItem("Summon", 10113).getInt();
         } catch (Exception e) {
             
         } finally {
@@ -69,6 +72,7 @@ public class PhazonMod {
         phazonDrop = new ItemPhazonDrop(phazonDropId).setUnlocalizedName(Vars.unlocalizedPhazonDrop);
         phazonCure = new ItemBucketCure(phazonCureId).setUnlocalizedName(Vars.unlocalizedPhazonCure);
         phazonCanon = (ItemPhazonCanon) new ItemPhazonCanon(phazonCanonId).setUnlocalizedName(Vars.unlocalizedPhazonCanon);
+        summon = new ItemSummon(summonId).setUnlocalizedName(Vars.unlocalizedSummon);
         
         GameRegistry.registerBlock(phazonBlock, ItemPhazon.class, Vars.unlocalizedPhazonBlock);
         
