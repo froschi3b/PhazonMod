@@ -6,11 +6,9 @@ The Phazon Mod adds an infection to Minecraft: Phazon
 ##Phazon Summon##
 
 This nifty Item is created with 3 diamonds ('D') and 1 Redstone ('R') in the following pattern:
-.|D|.
-.....
-D|R|D
-.....
-.| |.
+A|D|A 
+D|R|D 
+A|A|A 
 
 If you use it, a Phazon Meteor will instantly crash within a 50 block radius of you.
 
@@ -55,20 +53,16 @@ Those use Phazon, but keep in mind that you can't use them if your Phazon is low
 This is the same Canon the skeletons use. it uses 10% Phazon per shot.
 it does 6 hearts of damage, which is usually 1-2 hits.
 it is crafted with a Bow ('B') 5 Phazon Drops ('D') and a Phazon Cure ('C')
-.|D|.
-.....
-D|B|D
-.....
-D|C|D
+A|D|A 
+D|B|D 
+D|C|D 
 
 #Phazon Pick#
 This has the same properties as a diamond pickaxe, but uses 5% Phazon per Block
 it is crafted with 3 Phazon Drops ('D'), 2 Sticks ('S') and 2 Gold Ingots ('G')
-D|D|D
-.....
-G|S|G
-.....
-.|S|.
+D|D|D 
+G|S|G 
+A|S|A 
 
 ###Configuration###
 all id's are editable in the config file
