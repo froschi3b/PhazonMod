@@ -109,6 +109,14 @@ public class Util {
         short s = player.getEntityData().getShort(Vars.NBTNamePhazonLV);
         s -= amount(infinity);
         player.getEntityData().setShort(Vars.NBTNamePhazonLV,s);
+        
+
+        short t = player.getEntityData().getShort(Vars.NBTNamePhazonCorr);
+        t ++;
+        if(t>1000){
+            t=1000;
+        }
+        player.getEntityData().setShort(Vars.NBTNamePhazonCorr,t);
     }
     private static int amount(boolean inf){
         return inf ? 25 :50;
