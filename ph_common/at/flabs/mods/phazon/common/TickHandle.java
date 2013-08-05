@@ -13,7 +13,7 @@ public class TickHandle implements ITickHandler{
     public void tickStart(EnumSet<TickType> type, Object... tickData) {
         if(type.contains(TickType.PLAYER)){
             EntityPlayer player=(EntityPlayer) tickData[0];
-            if(player.getEntityData().getShort(Vars.NBTNamePhazonCorr)==1000){
+            if(player.getEntityData().getShort(Vars.NBTNamePhazonCorr)==375){
                 short s = player.getEntityData().getShort(Vars.NBTNamePhazonLV);
                 s++;
                 player.getEntityData().setShort(Vars.NBTNamePhazonLV,s);

@@ -115,8 +115,8 @@ public class Util {
 
         short t = player.getEntityData().getShort(Vars.NBTNamePhazonCorr);
         t ++;
-        if(t>1000){
-            t=1000;
+        if(t>375){
+            t=375;
         }
         player.getEntityData().setShort(Vars.NBTNamePhazonCorr,t);
     }

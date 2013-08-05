@@ -35,8 +35,8 @@ public class ItemBucketCure extends Item {
 
         if (!world.isRemote)
         {
-            short prev=ep.getEntityData().getShort(Vars.NBTNamePhazonLV);
-            prev-=200;
+            short prev=ep.getEntityData().getShort(Vars.NBTNamePhazonCorr);
+            prev-=75;
             if(prev<0){
                 prev=0;
             }

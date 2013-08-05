@@ -31,7 +31,7 @@ public class EventHandle {
             short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
             short t=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonCorr);
             int phLv=(int) (s/500d*imgw);
-            int phCo=(int) (t/1000d*imgw);
+            int phCo=(int) (t/375d*imgw);
             
             mc.renderEngine.func_110577_a(guiTex);
             mc.ingameGUI.drawTexturedModalRect(width/2-(imgw/2), y, 0, imgh, phLv, imgh);
