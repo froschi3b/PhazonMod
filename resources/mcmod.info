@@ -1,0 +1,15 @@
+[
+{
+  "modid": "PhazonMod",
+  "name": "Phazon Mod",
+  "description": "Try to get this Infection under control >:D",
+  "mcversion": "1.6.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["TheFrogMC"],
+  "credits": "ModJam2013, all the people at #modjam",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
