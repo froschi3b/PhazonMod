@@ -17,6 +17,7 @@ public class PhazonExplosion extends Explosion {
 
     public PhazonExplosion(World world, Entity e, double x, double y, double z, float strength) {
         super(world, e, x, y, z, strength);
+        worldObj=world;
         this.isFlaming=true;
     }
 
