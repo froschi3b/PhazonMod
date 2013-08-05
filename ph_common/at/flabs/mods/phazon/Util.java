@@ -58,6 +58,7 @@ public class Util {
                 
                 EntityInfCow eip = new EntityInfCow((EntityCow) entity);
                 world.spawnEntityInWorld(eip);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             if (entity instanceof EntityChicken) {
@@ -66,6 +67,7 @@ public class Util {
                 
                 EntityInfChicken eip = new EntityInfChicken((EntityChicken) entity);
                 world.spawnEntityInWorld(eip);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             if (entity instanceof EntityCreeper) {
@@ -74,6 +76,7 @@ public class Util {
                 
                 EntityInfCreeper eip = new EntityInfCreeper((EntityCreeper) entity);
                 world.spawnEntityInWorld(eip);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             if (entity instanceof EntityZombie) {
@@ -82,6 +85,7 @@ public class Util {
                 
                 EntityInfZombie eip = new EntityInfZombie((EntityZombie) entity);
                 world.spawnEntityInWorld(eip);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             if (entity instanceof EntitySkeleton) {
@@ -90,6 +94,7 @@ public class Util {
                 
                 EntityInfSkeleton eip = new EntityInfSkeleton((EntitySkeleton) entity);
                 world.spawnEntityInWorld(eip);
+                sendPat(x,y,z,world.provider.dimensionId);
                 return true;
             }
             return false;

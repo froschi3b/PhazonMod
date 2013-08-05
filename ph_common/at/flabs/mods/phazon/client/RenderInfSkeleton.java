@@ -4,6 +4,7 @@ import at.flabs.mods.phazon.Vars;
 import at.flabs.mods.phazon.entity.EntityInfSkeleton;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -18,6 +19,9 @@ public class RenderInfSkeleton extends RenderBiped {
     
     public RenderInfSkeleton() {
         super(new ModelInfSkeleton(), 0.5F);
+    }
+    public RenderInfSkeleton(ModelBiped model) {
+        super(model, 0.5F);
     }
     
     protected void preRenderCallback(EntityInfSkeleton par1EntitySkeleton, float par2) {

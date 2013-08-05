@@ -33,7 +33,7 @@ public class EntityPlasma extends Entity implements IProjectile {
     /** The owner of this arrow. */
     public Entity shootingEntity;
     private int ticksInAir;
-    private double damage = 2.0D;
+    private double damage = 4.0D;
     
     /** The amount of knockback an arrow applies when it hits a mob. */
     private int knockbackStrength;
