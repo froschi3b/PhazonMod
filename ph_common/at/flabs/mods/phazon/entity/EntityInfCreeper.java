@@ -1,6 +1,7 @@
 package at.flabs.mods.phazon.entity;
 
 import at.flabs.mods.phazon.PhazonMod;
+import at.flabs.mods.phazon.item.PhazonExplosion;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -23,22 +24,23 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityInfCreeper extends EntityInf {
-
+    
     /**
-     * Time when this creeper was last in an active state (Messed up code here, probably causes creeper animation to go
-     * weird)
+     * Time when this creeper was last in an active state (Messed up code here,
+     * probably causes creeper animation to go weird)
      */
     private int lastActiveTime;
-
+    
     /**
-     * The amount of time since the creeper was close enough to the player to ignite
+     * The amount of time since the creeper was close enough to the player to
+     * ignite
      */
     private int timeSinceIgnited;
     private int fuseTime = 15;
-
+    
     /** Explosion radius for this creeper. */
-    private int explosionRadius = 3;
-
+    private int explosionRadius = 9;
+    
     public EntityInfCreeper(World world) {
         super(world);
         this.tasks.addTask(1, new EntityAISwimming(this));
@@ -51,203 +53,175 @@ public class EntityInfCreeper extends EntityInf {
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
     }
+    
     public EntityInfCreeper(EntityCreeper ec) {
         this(ec.worldObj);
         this.setPosition(ec.posX, ec.posY, ec.posZ);
         this.setRotation(ec.rotationYaw, ec.rotationPitch);
     }
-
-    public int func_82143_as()
-    {
-        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.func_110143_aJ() - 1.0F);
+    
+    public int func_82143_as() {
+        return this.getAttackTarget() == null ? 3 : 3 + (int) (this.func_110143_aJ() - 1.0F);
     }
-    protected void fall(float par1)
-    {
+    
+    protected void fall(float par1) {
         super.fall(par1);
-        this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + par1 * 1.5F);
-
-        if (this.timeSinceIgnited > this.fuseTime - 5)
-        {
+        this.timeSinceIgnited = (int) ((float) this.timeSinceIgnited + par1 * 1.5F);
+        
+        if (this.timeSinceIgnited > this.fuseTime - 5) {
             this.timeSinceIgnited = this.fuseTime - 5;
         }
     }
-
-    protected void entityInit()
-    {
+    
+    protected void entityInit() {
         super.entityInit();
-        this.dataWatcher.addObject(16, Byte.valueOf((byte) - 1));
-        this.dataWatcher.addObject(17, Byte.valueOf((byte)0));
+        this.dataWatcher.addObject(16, Byte.valueOf((byte) -1));
+        this.dataWatcher.addObject(17, Byte.valueOf((byte) 0));
     }
-
+    
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
-    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeEntityToNBT(par1NBTTagCompound);
-
-        if (this.dataWatcher.getWatchableObjectByte(17) == 1)
-        {
+        
+        if (this.dataWatcher.getWatchableObjectByte(17) == 1) {
             par1NBTTagCompound.setBoolean("powered", true);
         }
-
-        par1NBTTagCompound.setShort("Fuse", (short)this.fuseTime);
-        par1NBTTagCompound.setByte("ExplosionRadius", (byte)this.explosionRadius);
+        
+        par1NBTTagCompound.setShort("Fuse", (short) this.fuseTime);
+        par1NBTTagCompound.setByte("ExplosionRadius", (byte) this.explosionRadius);
     }
-
+    
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
-    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readEntityFromNBT(par1NBTTagCompound);
-        this.dataWatcher.updateObject(17, Byte.valueOf((byte)(par1NBTTagCompound.getBoolean("powered") ? 1 : 0)));
-
-        if (par1NBTTagCompound.hasKey("Fuse"))
-        {
+        this.dataWatcher.updateObject(17, Byte.valueOf((byte) (par1NBTTagCompound.getBoolean("powered") ? 1 : 0)));
+        
+        if (par1NBTTagCompound.hasKey("Fuse")) {
             this.fuseTime = par1NBTTagCompound.getShort("Fuse");
         }
-
-        if (par1NBTTagCompound.hasKey("ExplosionRadius"))
-        {
+        
+        if (par1NBTTagCompound.hasKey("ExplosionRadius")) {
             this.explosionRadius = par1NBTTagCompound.getByte("ExplosionRadius");
         }
     }
-
+    
     /**
      * Called to update the entity's position/logic.
      */
-    public void onUpdate()
-    {
-        if (this.isEntityAlive())
-        {
+    public void onUpdate() {
+        if (this.isEntityAlive()) {
             this.lastActiveTime = this.timeSinceIgnited;
             int i = this.getCreeperState();
-
-            if (i > 0 && this.timeSinceIgnited == 0)
-            {
+            
+            if (i > 0 && this.timeSinceIgnited == 0) {
                 this.playSound("random.fuse", 1.0F, 0.5F);
             }
-
+            
             this.timeSinceIgnited += i;
-
-            if (this.timeSinceIgnited < 0)
-            {
+            
+            if (this.timeSinceIgnited < 0) {
                 this.timeSinceIgnited = 0;
             }
-
-            if (this.timeSinceIgnited >= this.fuseTime)
-            {
+            
+            if (this.timeSinceIgnited >= this.fuseTime) {
                 this.timeSinceIgnited = this.fuseTime;
-
-                if (!this.worldObj.isRemote)
-                {
+                
+                if (!this.worldObj.isRemote) {
                     boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
-
-                    if (this.getPowered())
-                    {
-                        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2), flag);
-                    }
-                    else
-                    {
-                        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
-                    }
-
+                    
+                    int mult = this.getPowered() ? 2 : 1;
+                    PhazonExplosion explosion = new PhazonExplosion(worldObj, this, this.posX, this.posY, this.posZ, (float) (this.explosionRadius * mult));
+                    explosion.isSmoking = flag;
+                    explosion.doExplosionA();
+                    explosion.doExplosionB(true);
+                    
                     this.setDead();
                 }
             }
         }
-
+        
         super.onUpdate();
     }
-
+    
     /**
      * Returns the sound this mob makes when it is hurt.
      */
-    protected String getHurtSound()
-    {
+    protected String getHurtSound() {
         return "mob.creeper.say";
     }
-
+    
     /**
      * Returns the sound this mob makes on death.
      */
-    protected String getDeathSound()
-    {
+    protected String getDeathSound() {
         return "mob.creeper.death";
     }
-
+    
     /**
      * Called when the mob's health reaches 0.
      */
-    public void onDeath(DamageSource par1DamageSource)
-    {
+    public void onDeath(DamageSource par1DamageSource) {
         super.onDeath(par1DamageSource);
-
-        if (par1DamageSource.getEntity() instanceof EntitySkeleton)
-        {
+        
+        if (par1DamageSource.getEntity() instanceof EntitySkeleton) {
             this.dropItem(Item.diamond.itemID, 1);
         }
     }
-
-    public boolean attackEntityAsMob(Entity par1Entity)
-    {
+    
+    public boolean attackEntityAsMob(Entity par1Entity) {
         return true;
     }
-
+    
     /**
      * Returns true if the creeper is powered by a lightning bolt.
      */
-    public boolean getPowered()
-    {
+    public boolean getPowered() {
         return this.dataWatcher.getWatchableObjectByte(17) == 1;
     }
-
+    
     @SideOnly(Side.CLIENT)
-
     /**
      * Params: (Float)Render tick. Returns the intensity of the creeper's flash when it is ignited.
      */
-    public float getCreeperFlashIntensity(float par1)
-    {
-        return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * par1) / (float)(this.fuseTime - 2);
+    public float getCreeperFlashIntensity(float par1) {
+        return ((float) this.lastActiveTime + (float) (this.timeSinceIgnited - this.lastActiveTime) * par1) / (float) (this.fuseTime - 2);
     }
-
+    
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
-    {
+    protected int getDropItemId() {
         return Item.gunpowder.itemID;
     }
-    protected void dropFewItems(boolean par1, int par2)
-    {
+    
+    protected void dropFewItems(boolean par1, int par2) {
         this.dropItem(getDropItemId(), 1);
         this.dropItem(PhazonMod.instance.phazonDrop.itemID, 1);
     }
-
+    
     /**
      * Returns the current state of creeper, -1 is idle, 1 is 'in fuse'
      */
-    public int getCreeperState()
-    {
+    public int getCreeperState() {
         return this.dataWatcher.getWatchableObjectByte(16);
     }
-
+    
     /**
      * Sets the state of creeper, -1 to idle and 1 to be 'in fuse'
      */
-    public void setCreeperState(int par1)
-    {
-        this.dataWatcher.updateObject(16, Byte.valueOf((byte)par1));
+    public void setCreeperState(int par1) {
+        this.dataWatcher.updateObject(16, Byte.valueOf((byte) par1));
     }
-
+    
     /**
      * Called when a lightning bolt hits the entity.
      */
-    public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
-    {
+    public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt) {
         super.onStruckByLightning(par1EntityLightningBolt);
-        this.dataWatcher.updateObject(17, Byte.valueOf((byte)1));
+        this.dataWatcher.updateObject(17, Byte.valueOf((byte) 1));
     }
 }

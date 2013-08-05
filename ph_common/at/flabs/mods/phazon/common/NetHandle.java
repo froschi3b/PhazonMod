@@ -1,4 +1,4 @@
-package at.flabs.mods.phazon.network;
+package at.flabs.mods.phazon.common;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Random;
 
 import at.flabs.mods.phazon.PhazonMod;
-import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetworkManager;

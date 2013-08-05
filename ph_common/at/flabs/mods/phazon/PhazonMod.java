@@ -2,7 +2,10 @@ package at.flabs.mods.phazon;
 
 import java.io.File;
 
-import at.flabs.mods.phazon.block.BlockPhazon;
+import at.flabs.mods.phazon.common.BlockPhazon;
+import at.flabs.mods.phazon.common.EventHandle;
+import at.flabs.mods.phazon.common.NetHandle;
+import at.flabs.mods.phazon.common.ProxyCommon;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;
@@ -14,7 +17,6 @@ import at.flabs.mods.phazon.item.ItemBucketCure;
 import at.flabs.mods.phazon.item.ItemPhazon;
 import at.flabs.mods.phazon.item.ItemPhazonCanon;
 import at.flabs.mods.phazon.item.ItemPhazonDrop;
-import at.flabs.mods.phazon.network.NetHandle;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

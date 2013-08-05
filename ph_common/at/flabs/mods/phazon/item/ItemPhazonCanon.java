@@ -1,7 +1,7 @@
 package at.flabs.mods.phazon.item;
 
-import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
+import at.flabs.mods.phazon.common.Util;
 import at.flabs.mods.phazon.entity.EntityPlasma;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -1,6 +1,6 @@
 package at.flabs.mods.phazon.client;
 
-import at.flabs.mods.phazon.ProxyCommon;
+import at.flabs.mods.phazon.common.ProxyCommon;
 import at.flabs.mods.phazon.entity.*;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

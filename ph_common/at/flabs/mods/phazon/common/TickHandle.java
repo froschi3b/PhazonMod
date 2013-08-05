@@ -1,7 +1,8 @@
-package at.flabs.mods.phazon;
+package at.flabs.mods.phazon.common;
 
 import java.util.EnumSet;
 
+import at.flabs.mods.phazon.Vars;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;

@@ -1,5 +1,6 @@
-package at.flabs.mods.phazon.block;
+package at.flabs.mods.phazon.common;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -10,13 +11,13 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import at.flabs.mods.phazon.PhazonMod;
-import at.flabs.mods.phazon.Util;
 import at.flabs.mods.phazon.Vars;
 
 public class BlockPhazon extends Block {
@@ -29,11 +30,15 @@ public class BlockPhazon extends Block {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
     }
     
+    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
+        return new ArrayList<ItemStack>();
+    }
+    
     public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
         return true;
     }
-    public boolean isBlockNormalCube(World world, int x, int y, int z)
-    {
+    
+    public boolean isBlockNormalCube(World world, int x, int y, int z) {
         return false;
     }
     

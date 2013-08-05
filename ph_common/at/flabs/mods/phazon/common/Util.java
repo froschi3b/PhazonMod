@@ -1,4 +1,4 @@
-package at.flabs.mods.phazon;
+package at.flabs.mods.phazon.common;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -16,6 +16,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.packet.Packet131MapData;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import at.flabs.mods.phazon.PhazonMod;
+import at.flabs.mods.phazon.Vars;
 import at.flabs.mods.phazon.entity.EntityInfChicken;
 import at.flabs.mods.phazon.entity.EntityInfCow;
 import at.flabs.mods.phazon.entity.EntityInfCreeper;

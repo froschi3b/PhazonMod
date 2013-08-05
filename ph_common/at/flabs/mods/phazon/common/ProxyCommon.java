@@ -1,4 +1,4 @@
-package at.flabs.mods.phazon;
+package at.flabs.mods.phazon.common;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

@@ -1,5 +1,6 @@
-package at.flabs.mods.phazon;
+package at.flabs.mods.phazon.common;
 
+import at.flabs.mods.phazon.Vars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
