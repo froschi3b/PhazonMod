@@ -46,6 +46,9 @@ public class NetHandle implements ITinyPacketHandler,IConnectionHandler{
         short s=ep.getEntityData().getShort(Vars.NBTNamePhazonLV);
         Packet131MapData pckt=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 0, Util.toBytes(s));
         PacketDispatcher.sendPacketToPlayer(pckt, player);
+        short t=ep.getEntityData().getShort(Vars.NBTNamePhazonCorr);
+        Packet131MapData pckt1=PacketDispatcher.getTinyPacket(PhazonMod.instance, (short) 2, Util.toBytes(t));
+        PacketDispatcher.sendPacketToPlayer(pckt1, player);
     }
     @Override
     public String connectionReceived(NetLoginHandler netHandler, INetworkManager manager) {

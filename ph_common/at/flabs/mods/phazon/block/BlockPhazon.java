@@ -29,10 +29,6 @@ public class BlockPhazon extends Block {
         this.blockIcon = icr.registerIcon(Vars.texdir + ":phazon");
     }
     
-    public int damageDropped(int meta) {
-        return meta;
-    }
-    
     public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
         return true;
     }

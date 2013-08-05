@@ -29,10 +29,11 @@ public class EventHandle {
             if(renderedBossHealth){
                 y=20;
             }
-            
+
             short s=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonLV);
+            short t=mc.thePlayer.getEntityData().getShort(Vars.NBTNamePhazonCorr);
             int phLv=(int) (s/500d*imgw);
-            int phCo=imgw;
+            int phCo=(int) (t/500d*imgw);
             
             mc.renderEngine.func_110577_a(guiTex);
             mc.ingameGUI.drawTexturedModalRect(width/2-(imgw/2), y, 0, imgh, phLv, imgh);
