@@ -27,6 +27,9 @@ public class NetHandle implements ITinyPacketHandler,IConnectionHandler{
         if(mapData.uniqueID==0){
             short val=(short)( ((mapData.itemData[1]&0xFF)<<8) | (mapData.itemData[0]&0xFF) );
             handler.getPlayer().getEntityData().setShort(Vars.NBTNamePhazonLV, val);
+        }else if(mapData.uniqueID==2){
+            short val=(short)( ((mapData.itemData[1]&0xFF)<<8) | (mapData.itemData[0]&0xFF) );
+            handler.getPlayer().getEntityData().setShort(Vars.NBTNamePhazonCorr, val);
         }else if(mapData.uniqueID==1){
             for(int i=0;i<50;i++){
                 DataInputStream in = new DataInputStream(new ByteArrayInputStream(mapData.itemData));
