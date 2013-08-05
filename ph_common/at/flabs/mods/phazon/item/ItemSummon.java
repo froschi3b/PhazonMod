@@ -18,9 +18,9 @@ public class ItemSummon extends Item {
     
     public ItemStack onEaten(ItemStack is, World world, EntityPlayer ep) {
         if (!world.isRemote) {
-            double x = ep.posX -100D + world.rand.nextInt(200);
-            double z = ep.posX -100D + world.rand.nextInt(200);
-            double y = world.getHeightValue((int)x, (int)z);
+            double x = ep.posX -50D + world.rand.nextInt(100);
+            double z = ep.posZ -50D + world.rand.nextInt(100);
+            double y = world.getHeightValue((int)x, (int)z)-4;
             
             PhazonExplosion explosion = new PhazonExplosion(world, ep, x,y, z, 9);
             explosion.isSmoking = true;
